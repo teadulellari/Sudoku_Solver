@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Grid,
@@ -6,38 +6,53 @@ import {
   TextField,
   InputAdornment,
   Button,
-} from "@material-ui/core";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import login from './login.css';
+  Paper,
+  IconButton,
+  Divider,
+} from "@mui/material";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import login from "./login.css";
 import { useNavigate } from "react-router-dom";
+import sudokuImg from "../../images/sudoku.png";
+
+const initialState = { email: "", password: "" };
 
 const Login = () => {
-    const navigate= useNavigate();
-    const showPassword = false;
-    const  handleSubmit = () => {
-      console.log('Data Submited!')
-      navigate('/');
-    };
+  // const navigate= useNavigate();
 
-    const  handleChange = () => {
-        
-    };
+  const [data, setData] = useState(initialState);
+  const [showPassword, setShowPassword] = useState(false);
+  let navigate = useNavigate();
 
-    const handleShowPassword = () =>{
-        showPassword = true;
-       
-    };
+  const handleSubmit = (e) => {
+    console.log("isnisde submit");
+    e.preventDefault();
+    navigate('/login')
+  };
 
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+
+    console.log(data);
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword((showPassword) => !showPassword);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
-      <Paper elevation={4} >
-        <Typography variant="h1">Log in</Typography>
-        <form classname="loginForm" onSubmit={handleSubmit}>
+      <Paper elevation={4} className="loginPaper">
+        <form className="loginForm" onSubmit={handleSubmit}>
           <Grid>
+            <img src={sudokuImg} className="logo" />
+            <Typography variant="h4" className="loginTitle">
+              Log in
+            </Typography>
+            <Divider className="divider" />
             <TextField
-            className="emailField"
+              className="field"
               name="email"
               variant="outlined"
               required
@@ -47,9 +62,11 @@ const Login = () => {
               autoFocus
               autoComplete="email"
               type="email"
+              spacing={2}
             />
+            <Divider className="divider" />
             <TextField
-            className="passwordField"
+              className="field"
               name="password"
               variant="outlined"
               required
@@ -57,18 +74,40 @@ const Login = () => {
               label="Password"
               onChange={handleChange}
               autoFocus
-              type="password"
+              type={showPassword ? "text" : "password"}
+              spacing={2}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleShowPassword}>
-                      {type === "password" ? <Visibility /> : <VisibilityOff />}
+                      {showPassword ? (
+                        <VisibilityIcon />
+                      ) : (
+                        <VisibilityOffIcon />
+                      )}
                     </IconButton>
                   </InputAdornment>
                 ),
               }}
             />
-            <Button classname="loginButton" type="submit" fullWidth variant="contained" color="primary" > Log in</Button>
+            <Divider className="divider" />
+            <Button
+              className="loginButton field"
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+            >
+              {" "}
+              Log in
+            </Button>
+            <Divider className="divider" />
+            <Button variant="text" className="field">
+              Forgot your password?
+            </Button>
+            <Button variant="text" className="field">
+              Don't have an account? Sign Up
+            </Button>
           </Grid>
         </form>
       </Paper>
