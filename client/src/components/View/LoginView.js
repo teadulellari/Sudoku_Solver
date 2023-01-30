@@ -9,7 +9,7 @@ const LoginView = () => {
         <AppBar
           className="appBar"
           position="static"
-          color="inherit"
+          color="primary"
         />
         <Login />
       </Grid>
