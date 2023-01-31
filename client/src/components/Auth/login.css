@@ -1,4 +1,4 @@
-.loginPaper {
+.loginPaper.MUIPaper-root {
   display: flex;
   justify-content: space-between;
   align-items: space-around;
@@ -23,14 +23,13 @@ form {
   text-align: center;
 }
 
-.divider {
+.divider.MuiDivider-root {
   height: 35px;
 }
 
 .logo {
   width: 60px;
   height: 60px;
-  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: -30px;

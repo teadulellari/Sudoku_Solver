@@ -12,9 +12,10 @@ import {
 } from "@mui/material";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import login from "./login.css";
+import  "./login.css";
 import { useNavigate } from "react-router-dom";
 import sudokuImg from "../../images/sudoku.png";
+import Signup from "./Signup";
 
 const initialState = { email: "", password: "" };
 
@@ -26,10 +27,18 @@ const Login = () => {
   let navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    console.log("isnisde submit");
     e.preventDefault();
-    navigate('/login')
+    navigate('/sudoku');
   };
+
+  const handleSubmitSignup = () => {
+    
+    console.log("Going to signUp");
+    navigate('/signup');
+    
+  };
+
+  
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -39,6 +48,7 @@ const Login = () => {
 
   const handleShowPassword = () => {
     setShowPassword((showPassword) => !showPassword);
+    
   };
 
   return (
@@ -105,7 +115,7 @@ const Login = () => {
             <Button variant="text" className="field">
               Forgot your password?
             </Button>
-            <Button variant="text" className="field">
+            <Button variant="text" className="field" onClick={handleSubmitSignup} >
               Don't have an account? Sign Up
             </Button>
           </Grid>
