@@ -1,22 +1,19 @@
-import { Container } from '@mui/system';
-import Navbar from '../Navbar/Navbar';
-import React from 'react';
-import './home.css';
-
-
-
-
-
+import { Grow } from "@mui/material";
+import Navbar from "../Navbar/Navbar";
+import React from "react";
+import "./home.css";
+import Actions from "../Actions/Actions";
+import { Container } from "@mui/system";
 
 const Home = () => {
-
-    return(
-
-        <Container className="container" >
-            <Navbar />
-
-        </Container>
-    )
-}
+  return (
+    <Grow in>
+      <Container>
+        <Navbar />
+        <Actions />
+      </Container>
+    </Grow>
+  );
+};
 
 export default Home;

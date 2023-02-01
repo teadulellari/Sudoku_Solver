@@ -1,0 +1,32 @@
+#actionsPaper {
+    margin-top: 200px;
+    width: 200px;
+    height: 400px;
+    display: flex;
+    float: right;
+}
+#actionsForm {
+
+    height: 200px;
+    width: 100px;
+    display: flex;
+    align-items: flex-end;
+    width: fit-content;
+    margin-top: 200px;
+    margin-left: 400px;
+    border: none;
+    color: aliceblue;
+}
+
+#actionsTitle {
+    color: pink;
+    text-align: center;
+    margin: auto;
+
+   
+}
+
+.divider {
+    height: 40px;
+   color: white;
+}

@@ -11,6 +11,7 @@
     margin-top: 15px;
     margin-right: 150px;
     overflow: hidden;
+    float: inherit;
 
 }
 
