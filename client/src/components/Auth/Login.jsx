@@ -15,7 +15,6 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import  "./login.css";
 import { useNavigate } from "react-router-dom";
 import sudokuImg from "../../images/sudoku.png";
-import Signup from "./Signup";
 
 const initialState = { email: "", password: "" };
 
@@ -52,17 +51,17 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Paper elevation={4} className="loginPaper">
+    <Container component="main"  id ="container">
+      <Paper elevation={4} id="loginPaper">
         <form className="loginForm" onSubmit={handleSubmit}>
-          <Grid>
-            <img src={sudokuImg} className="logo" />
-            <Typography variant="h4" className="loginTitle">
+          <Grid >
+            <img src={sudokuImg} id="loginLogo" alt="sudoku-logo"/>
+            <Typography variant="h4" id="loginTitle">
               Log in
             </Typography>
             <Divider className="divider" />
             <TextField
-              className="field"
+              id="field1"
               name="email"
               variant="outlined"
               required
@@ -76,7 +75,7 @@ const Login = () => {
             />
             <Divider className="divider" />
             <TextField
-              className="field"
+              id="field2"
               name="password"
               variant="outlined"
               required
@@ -108,14 +107,13 @@ const Login = () => {
               variant="contained"
               color="primary"
             >
-              {" "}
               Log in
             </Button>
             <Divider className="divider" />
-            <Button variant="text" className="field">
+            <Button variant="text" id="buttonField1" >
               Forgot your password?
             </Button>
-            <Button variant="text" className="field" onClick={handleSubmitSignup} >
+            <Button variant="text" id="buttonField2" onClick={handleSubmitSignup} >
               Don't have an account? Sign Up
             </Button>
           </Grid>

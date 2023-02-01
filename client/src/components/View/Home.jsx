@@ -12,7 +12,7 @@ const Home = () => {
 
     return(
 
-        <Container className="container">
+        <Container className="container" >
             <Navbar />
 
         </Container>

@@ -13,6 +13,7 @@ import {
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate } from "react-router-dom";
+import './register.css';
 import './login.css'
 
 const initialState = {
@@ -44,12 +45,12 @@ const Signup = () => {
   
 
   return (
-    <Container>
-      <Paper>
-        <form onSubmit={handleSubmit}>
+    <Container  maxWidth="xs">
+      <Paper elevation={4}  id= "signupPaper">
+        <form onSubmit={handleSubmit} className="loginForm">
           <Grid>
-            <Typography variant="h4" className="loginTitle">
-              Sign up
+            <Typography variant="h4" id="signupTitle">
+              Register
             </Typography>
             <Divider className="divider" />
             <TextField
@@ -64,6 +65,7 @@ const Signup = () => {
               autoComplete="name"
               type="name"
             />
+            <Divider className="divider" />
             <TextField
               className="field"
               name="lastName"
@@ -76,6 +78,7 @@ const Signup = () => {
               autoComplete="name"
               type="name"
             />
+            <Divider className="divider" />
             <TextField
               className="field"
               name="email"
@@ -88,6 +91,7 @@ const Signup = () => {
               autoComplete="email"
               type="email"
             />
+            <Divider className="divider" />
             <TextField
               className="field"
               name="password"
@@ -113,6 +117,7 @@ const Signup = () => {
                 ),
               }}
             />
+            <Divider className="divider" />
             <TextField
               className="field"
               name="password"
@@ -122,22 +127,23 @@ const Signup = () => {
               label="Repeat Password"
               onChange={handleChange}
               autoFocus
-              type={showPassword ? "text" : "password"}
+              type="password"
               spacing={2}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={handleShowPassword}>
-                      {showPassword ? (
-                        <VisibilityIcon />
-                      ) : (
-                        <VisibilityOffIcon />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
             />
+            <Divider className="divider" />
+            <Button
+              className="loginButton field"
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+            >
+              Sign up
+            </Button>
+            <Divider className="divider" />
+            <Button variant="text" id="buttonField1" >
+              Already have an account? Log in
+            </Button>
           </Grid>
         </form>
       </Paper>

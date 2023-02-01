@@ -1,17 +1,17 @@
 import React from "react";
 import { Container, Grid, AppBar } from "@mui/material";
-import Signup from "../Auth/Login";
+import Register from "../Auth/Register";
 
 const LoginView = () => {
   return (
     <Container>
-      <Grid>
+      <Grid >
         <AppBar
           className="appBar"
           position="static"
           color="primary"
         />
-        <Signup />
+        <Register />
       </Grid>
     </Container>
   );

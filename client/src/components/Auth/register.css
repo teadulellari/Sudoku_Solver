@@ -1,0 +1,16 @@
+#signupPaper {
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+    width: 500px;
+    height: fit-content;
+   margin: auto;
+   margin-top: 50px;
+
+}
+
+#signupTitle {
+margin-top: 20px;
+color: #0096ff;
+}
+
