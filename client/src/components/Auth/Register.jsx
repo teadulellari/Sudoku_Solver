@@ -45,7 +45,7 @@ const Signup = () => {
   
 
   return (
-    <Container  maxWidth="xs">
+    <Container id="container">
       <Paper elevation={4}  id= "signupPaper">
         <form onSubmit={handleSubmit} className="loginForm">
           <Grid>

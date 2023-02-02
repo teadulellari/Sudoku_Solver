@@ -1,32 +1,38 @@
-#actionsPaper {
-    margin-top: 200px;
-    width: 200px;
-    height: 400px;
+#actionsContainer {
     display: flex;
-    float: right;
+    justify-content: flex-end;
+    height: 500px;
+    width: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+#actionsPaper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80%;
+    width: 300px;
+    margin: auto;
 }
 #actionsForm {
-
-    height: 200px;
-    width: 100px;
-    display: flex;
-    align-items: flex-end;
     width: fit-content;
-    margin-top: 200px;
-    margin-left: 400px;
     border: none;
-    color: aliceblue;
+    margin: auto;
+    margin: 10px 0;
 }
 
 #actionsTitle {
     color: pink;
     text-align: center;
     margin: auto;
-
-   
 }
 
-.divider {
-    height: 40px;
-   color: white;
+#divider {
+    border: 0;
+    visibility: hidden;
 }

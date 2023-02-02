@@ -4,8 +4,8 @@ import {Button} from "@mui/material";
 
 const Solve = () => {
  
-    const handleClick = () => {
-      
+    const handleClick = (e) => {
+      e.preventDefault();
        console.log("You clicked Solve!");
     }
 

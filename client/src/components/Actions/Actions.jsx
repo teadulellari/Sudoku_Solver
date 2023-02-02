@@ -7,20 +7,21 @@ import "./actions.css";
 
 const Actions = () => {
   return (
-    <Paper elevation={4} id='actionsPaper'>
+    <Container maxWidth="xl" id="actionsContainer">
+    <Paper elevation={4} id="actionsPaper">
       <form className="actionsForm">
         <Typography variant="h5" id="actionsTitle">
           Actions:
         </Typography>
         <Divider className="divider" />
         <Check />
-        <Divider  className="divider" />
+        <Divider className="divider" />
         <Solve />
-        <Divider className="divider"/>
+        <Divider className="divider" />
         <Timer />
       </form>
-      </Paper>
-   
+    </Paper>
+    </Container>
   );
 };
 

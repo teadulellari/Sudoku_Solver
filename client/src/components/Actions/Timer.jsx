@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Grid, Typography } from "@mui/material";
 
 const Timer = () => {
-  const startTimer = () => {
+  const startTimer = (e) => {
+    e.preventDefault();
     console.log("You started the timer");
   };
 
@@ -10,7 +11,7 @@ const Timer = () => {
     <>
       <Button
         className="solveButton"
-        type="contained"
+        type="submit"
         variant="contained"
         color="secondary"
         onClick={startTimer}

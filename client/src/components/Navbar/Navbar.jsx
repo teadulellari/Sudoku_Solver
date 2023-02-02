@@ -5,15 +5,16 @@ import "./navbar.css";
 
 const Navbar = () => {
   return (
-    <AppBar id="navbarAppBar" position="static">
-      <div id="leftNavbar">
+    <div>
+      <Toolbar id="navbarAppBar">
         <img src={sudokuImg} id="logo" />
         <Hidden xsDown>
           <Typography variant="h6" to="/sudoku" fontWeight="bold" id="title">
             Sudoku Solver
           </Typography>
         </Hidden>
-      </div>
+      </Toolbar>
+
       <Toolbar id="navbarToolbar">
         <Hidden xsDown>
           <Typography id="navbarName">Name here</Typography>
@@ -22,7 +23,7 @@ const Navbar = () => {
           Logout
         </Button>
       </Toolbar>
-    </AppBar>
+    </div>
   );
 };
 

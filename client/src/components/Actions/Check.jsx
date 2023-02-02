@@ -6,8 +6,8 @@ import { Button } from "@mui/material";
 
 const Check = () => {
 
- const handleClick = () => {
-  
+ const handleClick = (e) => {
+  e.preventDefault();
      console.log("You clicked Check!");
  }
 

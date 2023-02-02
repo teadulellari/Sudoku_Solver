@@ -1,11 +1,9 @@
 #signupPaper {
     display: flex;
     justify-content: center;
-    align-items: space-around;
+    align-items: center;
     width: 500px;
     height: fit-content;
-   margin: auto;
-   margin-top: 50px;
 
 }
 

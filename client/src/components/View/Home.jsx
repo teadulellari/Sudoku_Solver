@@ -8,7 +8,7 @@ import { Container } from "@mui/system";
 const Home = () => {
   return (
     <Grow in>
-      <Container>
+      <Container >
         <Navbar />
         <Actions />
       </Container>

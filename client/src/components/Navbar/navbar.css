@@ -2,46 +2,23 @@
     top: 50px;
 }
 #navbarAppBar {
-    background-color: #b293cb;
-    height: 70px;
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    align-content:space-between;
-    margin-top: 15px;
-    margin-right: 150px;
-    overflow: hidden;
-    float: inherit;
-
+    float: left;
+    margin-left: 40px;
+    
 }
 
-#leftNavbar {
-    display: flex;
-    flex-direction: row;
-    align-content:flex-start;
-    top: 60px;
-    padding-right: 400px;
-}
-#logo {
-  height: 60px;
-  width: 60px;
-  padding-right: 50px;
-  padding-left: 80px;
-}
 
 #navbarToolbar {
-    display:flex;
-    align-content: flex-end;
-    
+   float: right;
 
 }
-#title {
-    padding-top: 19px;
-    padding-right: 50px;
-  padding-left: 20px;
-}
-#navbarName {
-   padding-top: 3px;
-   padding-right: 60px;
-   font-weight: bold;
-}
+
+#logo {
+    height: 60px;
+    width: 60px;
+    
+  }
+
+  #navbarName {
+    margin-right: 30px;
+  }

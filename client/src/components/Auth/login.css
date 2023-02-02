@@ -1,36 +1,83 @@
-#container {
-  margin-top: 80px;
+/*#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
+
 #loginPaper {
   display: flex;
-  justify-content: space-between;
-  width: 400px;
-  height: 500px;
-  margin-top: 90px;
-  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  text-align: center;
+  height: 80%;
 }
 
-#loginTitle {
-  color: #0096ff;
-  text-align: center;
-  margin: auto;
-}
-
-form {
-  width: 90%;
-
-  align-items: right;
-  text-align: right;
-  margin: auto;
-  text-align: center;
+.loginForm {
+  width: 100%;
 }
 
 .divider {
-  height: 35px;
+  margin: 1em 0;
+  width: 100%;
+}
+
+#loginTitle {
+  margin-top: 2em;
+}
+
+#loginLogo {
+ 
+  height: 60px;
+  width: 60px;
+}
+
+.field {
+  margin: 1em 0;
+}
+
+#buttonField1, #buttonField2 {
+  margin-top: 1em;
+}
+
+*/
+
+#container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+#loginPaper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  padding: 20px;
 }
 
 #loginLogo {
   width: 60px;
   height: 60px;
-  
+  margin-bottom: 20px;
 }
+
+
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divider {
+  height: 35px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+
+

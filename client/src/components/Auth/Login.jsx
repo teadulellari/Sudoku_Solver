@@ -51,7 +51,7 @@ const Login = () => {
   };
 
   return (
-    <Container component="main"  id ="container">
+    <Container component="main"  id ="container" maxWidth="xs">
       <Paper elevation={4} id="loginPaper">
         <form className="loginForm" onSubmit={handleSubmit}>
           <Grid >
