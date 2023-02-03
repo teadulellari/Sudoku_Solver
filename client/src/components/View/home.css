@@ -1,4 +1,31 @@
-.container {
-    background-color: beige;
-    height: 100vh;
+.muiContainer {
+    width: 1000px;
+    height: 1200px;
+}
+.navbarDiv {
+    position: sticky;
+    top: 0;
+    margin-bottom: 20px;
+}
+
+.contentDiv {
+    display: flex;
+    justify-content: space-between; /* Add space between sudokuDiv and actionsDiv */
+    height: 100%;
+}
+
+.sudokuDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin-right: 20px; /* Add margin to the right of sudokuDiv */
+}
+
+.actionsDiv {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 30%;
+    margin-left: auto;
 }

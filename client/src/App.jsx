@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <Container>
+      <Container >
         <Routes>
         <Route path='/sudoku' exact element={<Home /> } />
         <Route path="/login" exact element={<LoginView />} />

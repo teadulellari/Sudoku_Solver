@@ -4,13 +4,23 @@ import React from "react";
 import "./home.css";
 import Actions from "../Actions/Actions";
 import { Container } from "@mui/system";
+import SudokuGrid from "../Actions/SudokuGrid";
 
 const Home = () => {
   return (
     <Grow in>
-      <Container >
-        <Navbar />
-        <Actions />
+      <Container>
+        <div className="navbarDiv">
+          <Navbar />
+        </div>
+        <div className="contentDiv">
+          <div className="sudokuDiv">
+            <SudokuGrid />
+          </div>
+          <div className="actionsDiv">
+            <Actions />
+          </div>
+        </div>
       </Container>
     </Grow>
   );

@@ -1,5 +1,6 @@
-.MuiCOntainer {
+.MuiContainer {
     top: 50px;
+    position: sticky;
 }
 #navbarAppBar {
     float: left;

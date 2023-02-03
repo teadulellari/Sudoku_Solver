@@ -1,0 +1,30 @@
+.parentContainer {
+    width: 31.5rem;
+  }
+#dataContainer {
+    display: grid;
+    background-color:#FFC0CB;
+    grid-template-columns: repeat(9, 3.5rem);
+    grid-template-rows: repeat(9, 3.5rem);
+    grid-gap: 0.25rem;
+    border: 2px solid #FFC0CB;
+    width: 31.5rem;
+  
+   
+}
+
+#dataCell {
+    height: 20px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+    
+}
+
+
+
+  
+
+
