@@ -44,3 +44,6 @@
   width: inherit;
   padding: 0;
 }
+body {
+  margin: 0;
+}

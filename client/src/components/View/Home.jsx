@@ -15,6 +15,7 @@ const Home = () => {
           <Navbar />
         </div>
         <div className="contentDiv">
+          <div className="emptyDiv"></div>
           <div className="alertDiv">
            <Alert />
           </div>

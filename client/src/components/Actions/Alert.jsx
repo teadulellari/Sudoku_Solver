@@ -7,7 +7,7 @@ const Alert = () => {
 
     return (
    <Container maxWidth="xl" id="alertContainer">
-    <Paper id="alertPaper">
+    <Paper id="alertPaper" elevation={4}>
     <Typography variant="h6" id="alertText">
           Alerts here
         </Typography>

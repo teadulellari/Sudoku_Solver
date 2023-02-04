@@ -1,20 +1,34 @@
+#muiContainer{
+    margin: au0to;
+}
 .contentDiv {
     display: grid;
     column-gap: 50px;
-    grid-template-columns: 80% auto;
+    grid-template-columns: 20% 60% 30%;
     grid-template-rows: auto auto;
     align-items: center;
     height: 100%;
-    width: 90%;
+    width: fit-content;
+  
 }
 
 .alertDiv {
     display: flex;
     grid-row: 1;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    grid-column: 2;
+    text-align: flex-end;
+    align-items: flex-end;
+    justify-content: flex-end;
     width: inherit;
+}
+.emptyDiv {
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+
 }
 
 .sudokuDiv {
