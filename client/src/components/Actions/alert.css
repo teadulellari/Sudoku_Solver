@@ -1,0 +1,14 @@
+
+#alertContainer{
+    width: 60%;
+}
+#lertPaper {
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-end;
+text-align: center;
+height: 300px;
+width: fit-content;
+
+}

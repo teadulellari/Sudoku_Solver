@@ -5,7 +5,7 @@ import "./navbar.css";
 
 const Navbar = () => {
   return (
-    <div>
+    <div id="navbar">
       <Toolbar id="navbarAppBar">
         <img src={sudokuImg} id="logo" />
         <Hidden xsDown>

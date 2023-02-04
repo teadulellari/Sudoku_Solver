@@ -8,7 +8,8 @@
     grid-template-rows: repeat(9, 3.5rem);
     grid-gap: 0.25rem;
     border: 2px solid #FFC0CB;
-    width: 31.5rem;
+    width:fit-content;
+    height: fit-content;
   
    
 }

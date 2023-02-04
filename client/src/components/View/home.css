@@ -1,31 +1,36 @@
-.muiContainer {
-    width: 1000px;
-    height: 1200px;
-}
-.navbarDiv {
-    position: sticky;
-    top: 0;
-    margin-bottom: 20px;
+.contentDiv {
+    display: grid;
+    column-gap: 50px;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    height: 100%;
+    width: 90%;
 }
 
-.contentDiv {
+.alertDiv {
     display: flex;
-    justify-content: space-between; /* Add space between sudokuDiv and actionsDiv */
-    height: 100%;
+    grid-row: 1;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
 }
 
 .sudokuDiv {
+    
+    grid-row: 2;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 60%;
-    margin-right: 20px; /* Add margin to the right of sudokuDiv */
+    width: inherit;
 }
 
 .actionsDiv {
+    grid-row: 2;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 30%;
-    margin-left: auto;
+    flex-wrap: wrap;
+    align-items: center;
+   
 }

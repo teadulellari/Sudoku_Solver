@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+#root {
+  height: 100vh;
+}
+#muiContainer{
+  height: inherit;
+  width: inherit;
+  padding: 0;
+}

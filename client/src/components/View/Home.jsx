@@ -5,15 +5,19 @@ import "./home.css";
 import Actions from "../Actions/Actions";
 import { Container } from "@mui/system";
 import SudokuGrid from "../Actions/SudokuGrid";
+import Alert from "../Actions/Alert";
 
 const Home = () => {
   return (
     <Grow in>
-      <Container>
+      <Container id="muiContainer" disableRipple="true">
         <div className="navbarDiv">
           <Navbar />
         </div>
         <div className="contentDiv">
+          <div className="alertDiv">
+           <Alert />
+          </div>
           <div className="sudokuDiv">
             <SudokuGrid />
           </div>

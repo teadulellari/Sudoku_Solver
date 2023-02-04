@@ -1,10 +1,16 @@
 .MuiContainer {
-    top: 50px;
     position: sticky;
+    height: 50px;
+    width: inherit;
+}
+
+
+#navbar {
+padding-bottom: 50px;
+height: 5px;
 }
 #navbarAppBar {
     float: left;
-    margin-left: 40px;
     
 }
 
