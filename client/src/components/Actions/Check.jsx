@@ -8,8 +8,10 @@ const Check = () => {
 
  const handleClick = (e) => {
   e.preventDefault();
-     console.log("You clicked Check!");
+    
  }
+
+
 
     return (
         <Button 
