@@ -10,7 +10,7 @@ import Alert from "../Actions/Alert";
 const Home = () => {
   return (
     <Grow in>
-      <Container id="muiContainer" disableRipple="true">
+      <Container id="muiContainer" >
         <div className="navbarDiv">
           <Navbar />
         </div>

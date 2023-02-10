@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({ baseUrl: 'http://localhost:3000/sudoku' });
+const API = axios.create({ baseURL: 'http://localhost:5000/sudoku'});
 
 
-export const createSudoku = (data) => API.post('/sudoku', newSudoku);
+export const createSudoku = (grid) => API.post('/', grid);
+export const checkSudoku = (grid) => API.post('/check', grid);

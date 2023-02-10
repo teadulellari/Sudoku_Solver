@@ -14,6 +14,7 @@ function App() {
         <Route path='/sudoku' exact element={<Home /> } />
         <Route path="/login" exact element={<LoginView />} />
         <Route path="/signup" exact element={<SignupView />} />
+        <Route path="/sudoku/check" exact element={<Home />} />
 
         </Routes>
       </Container>
