@@ -11,10 +11,10 @@ function App() {
     <BrowserRouter>
       <Container id="muiContainer">
         <Routes>
-        <Route path='/sudoku' exact element={<Home /> } />
+        <Route path='/' exact element={<Home /> } />
         <Route path="/login" exact element={<LoginView />} />
         <Route path="/signup" exact element={<SignupView />} />
-        <Route path="/sudoku/check" exact element={<Home />} />
+        <Route path="/check" exact element={<Home />} />
 
         </Routes>
       </Container>

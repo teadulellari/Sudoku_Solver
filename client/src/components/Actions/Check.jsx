@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { Button } from "@mui/material";
-import SudokuGrid from './SudokuGrid';
-import { checkSudoku, createSudoku } from '../../api/index';
 import { useNavigate } from "react-router-dom";
+import { checkSudoku } from '../../api/index';
 
+const Check = ({ gridVal }) => {
 
-
-const Check = () => {
-
-  const [gridVal, setGridVal] = useState(" ");
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
- 
+    
     e.preventDefault();
-    const result =  await checkSudoku(gridVal);
-
-    navigate('/sudoku/check');
-    console.log(result);
-
-  }
-
-
+   try {
+    console.log("This is grid in the Check file")
+    console.log(gridVal);
+    const response = await checkSudoku({gridVal});
+    console.log("2")
+    console.log(response);
+    console.log(response.data);
+    navigate('/check');
+   } catch (error){
+    console.error(error);
+   }
+   
+ 
+    
+  };
 
     return (
         <Button 

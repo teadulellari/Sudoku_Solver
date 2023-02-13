@@ -1,6 +1,6 @@
 import { Grow } from "@mui/material";
 import Navbar from "../Navbar/Navbar";
-import React from "react";
+import React, { useState} from "react";
 import "./home.css";
 import Actions from "../Actions/Actions";
 import { Container } from "@mui/system";
@@ -8,6 +8,8 @@ import SudokuGrid from "../Actions/SudokuGrid";
 import Alert from "../Actions/Alert";
 
 const Home = () => {
+  const [gridVal, setGridVal] = useState([]);
+
   return (
     <Grow in>
       <Container id="muiContainer" >
@@ -20,10 +22,10 @@ const Home = () => {
            <Alert />
           </div>
           <div className="sudokuDiv">
-            <SudokuGrid />
+            <SudokuGrid setGridVal={setGridVal} />
           </div>
           <div className="actionsDiv">
-            <Actions />
+            <Actions gridVal={gridVal} />
           </div>
         </div>
       </Container>

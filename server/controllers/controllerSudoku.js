@@ -1,10 +1,17 @@
 import express from "express";
 const router = express.Router();
 
+
+export const getSudoku = async (req, res) => {
+
+  res.send("Hi");
+}
+
 export const  sudokuCheck = async (req, res) => {
-    const { board } = req.body;
-    console.log(board);
-    console.log("in the beginning of the request");
+    const  {board}  = req.body;
+    console.log("This is what I get")
+    console.log({board});
+
     
     try {
       const checkBoard  =  async (board) =>  {
@@ -48,7 +55,7 @@ export const  sudokuCheck = async (req, res) => {
       };
       const result = await checkBoard(board);
       console.log("This is the result" + result)
-      res.json("beko");
+     res.status(200).send( result );
       
     } catch (error) {
       console.log("This is the error " + error)
