@@ -13,10 +13,14 @@ const Check = ({ gridVal }) => {
    try {
     console.log("This is grid in the Check file")
     console.log(gridVal);
-    const response = await checkSudoku({gridVal});
-    console.log("2")
-    console.log(response);
-    console.log(response.data);
+    const response = await checkSudoku(gridVal);
+    console.log("This is the response")
+    console.log(response.data)
+    if(response.data === true) {
+      console.log("Sudoku is valid");
+    } else{
+      console.log("Sudoku is not valid");
+    }
     navigate('/check');
    } catch (error){
     console.error(error);

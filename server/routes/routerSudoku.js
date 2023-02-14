@@ -2,9 +2,9 @@ import express from "express";
 const router = express.Router();
 
 //import the controller
-import { getSudoku, sudokuCheck } from '../controllers/controllerSudoku';
+import { sudokuCheck, sudokuSolve } from '../controllers/controllerSudoku.js';
 
-router.get('/', getSudoku);
 router.post('/check', sudokuCheck);
+router.post('/solve', sudokuSolve);
 
 export default router;

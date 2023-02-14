@@ -1,12 +1,26 @@
 import React from "react";
 import {Button} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { solveSudoku } from '../../api/index';
 
 
-const Solve = () => {
- 
-    const handleClick = (e) => {
+const Solve = ({ gridVal }) => {
+
+  const navigate = useNavigate();
+
+    const handleClick = async (e) => {
       e.preventDefault();
-       console.log("You clicked Solve!");
+      try {
+        console.log("This is grid in the Solve file")
+    console.log(gridVal);
+     const response = await solveSudoku(gridVal);
+     console.log("This is the response")
+     console.log(response.data);
+     navigate('/solve');
+        
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     return (

@@ -2,17 +2,22 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
-import SudokuModel from "./models/sudokuModel.js";
+import * as dotenv from "dotenv";
+import routerSudoku from './routes/routerSudoku.js';
 
+//create instance of the app
 const app = express();
 dotenv.config();
-const router = express.Router();
+
 //establishing middlewares
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/api", router);
+
+//mounting routes
+app.use('/api', routerSudoku);
+
+
 const mongoURI = process.env.MONGO_URI;
 const PORT = process.env.PORT;
 

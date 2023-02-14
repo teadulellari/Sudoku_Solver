@@ -15,6 +15,7 @@ function App() {
         <Route path="/login" exact element={<LoginView />} />
         <Route path="/signup" exact element={<SignupView />} />
         <Route path="/check" exact element={<Home />} />
+        <Route path="/solve" exact element={<Home />} />
 
         </Routes>
       </Container>

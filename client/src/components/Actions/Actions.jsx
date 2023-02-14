@@ -16,7 +16,7 @@ const Actions = ({gridVal}) => {
         <Divider className="divider" />
         <Check gridVal={gridVal} />
         <Divider className="divider" />
-        <Solve />
+        <Solve  gridVal={gridVal}/>
         <Divider className="divider" />
         <Timer />
       </form>
