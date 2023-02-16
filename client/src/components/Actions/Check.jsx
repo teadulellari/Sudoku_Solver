@@ -7,13 +7,13 @@ const Check = ({ gridVal }) => {
 
   const navigate = useNavigate();
 
-  const handleClick = async (e) => {
+  const handleClick =  async (e) => {
     
     e.preventDefault();
-   try {
+  
     console.log("This is grid in the Check file")
     console.log(gridVal);
-    const response = await checkSudoku(gridVal);
+    const response =  await checkSudoku(gridVal);
     console.log("This is the response")
     console.log(response.data)
     if(response.data === true) {
@@ -22,12 +22,7 @@ const Check = ({ gridVal }) => {
       console.log("Sudoku is not valid");
     }
     navigate('/check');
-   } catch (error){
-    console.error(error);
-   }
    
- 
-    
   };
 
     return (

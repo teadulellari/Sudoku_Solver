@@ -13,7 +13,7 @@ const Solve = ({ gridVal }) => {
       try {
         console.log("This is grid in the Solve file")
     console.log(gridVal);
-     const response = await solveSudoku(gridVal);
+     const response =  await solveSudoku(gridVal);
      console.log("This is the response")
      console.log(response.data);
      navigate('/solve');

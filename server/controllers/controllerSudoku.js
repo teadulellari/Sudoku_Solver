@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 const isValid = (board, row, col, num) => {
-  
+  debugger;
 
   for (let i = 0; i <= 8; i++) {
     if (i !== col && board[row][i] === num.toString()) {
@@ -23,10 +23,8 @@ const isValid = (board, row, col, num) => {
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       if (
-        startRow !== row &&
-        startCol !== col &&
-        i + startRow!== row &&
-        j + startCol!== col &&
+        (i + startRow!== row ||
+        j + startCol!== col ) &&
         board[i + startRow][j + startCol] === num.toString()
       ) {
         return false;
@@ -37,7 +35,7 @@ const isValid = (board, row, col, num) => {
 };
 
 const checkBoard = (board) => {
-debugger;
+
   for (let row = 0; row <= 8; row++) {
     for (let col = 0; col <= 8; col++) {
       let num = board[row][col];
@@ -100,21 +98,23 @@ const solve = (board, row, col) => {
    return false;
 };
 
-export const sudokuCheck = async (req, res) => {
+export const sudokuCheck =  (req, res) => {
   const board = req.body;
   try {
-    const result = await checkBoard(board);
+    const result =  checkBoard(board);
+    console.log("this is the result")
+    console.log(result)
     res.status(200).send(result);
   } catch (error) {
     res.send(error);
   }
 };
 
-export const sudokuSolve = async (req, res) => {
+export const sudokuSolve = (req, res) => {
   const board = req.body;
   try {
-  const result = await solve(board, 0, 0 ); 
-    res.status(200).send(result);
+  const result =  solve(board, 0, 0 ); 
+    res.status(200).send(board);
   } catch (error) {
     console.log("This is the error " + error);
     res.send(error);
