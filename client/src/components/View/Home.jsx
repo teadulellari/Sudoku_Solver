@@ -9,6 +9,7 @@ import Alert from "../Actions/Alert";
 
 const Home = () => {
   const [gridVal, setGridVal] = useState([]);
+  const [validity, setValidity] = useState();
 
   return (
     <Grow in>
@@ -19,13 +20,13 @@ const Home = () => {
         <div className="contentDiv">
           <div className="emptyDiv"></div>
           <div className="alertDiv">
-           <Alert />
+           <Alert validity={validity}/>
           </div>
           <div className="sudokuDiv">
             <SudokuGrid setGridVal={setGridVal} />
           </div>
           <div className="actionsDiv">
-            <Actions gridVal={gridVal} />
+            <Actions gridVal={gridVal} setGridVal={setGridVal} setValidity={setValidity} validity={validity} />
           </div>
         </div>
       </Container>

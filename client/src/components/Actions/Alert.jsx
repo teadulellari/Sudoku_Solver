@@ -1,15 +1,20 @@
-import React from "react";
-import { Grid, Paper, Typography, Divider, Container } from "@mui/material";
+import React, { useState, useEffect} from "react";
+import { Paper, Typography, Container } from "@mui/material";
 import './alert.css'
 
-const Alert = () => {
-
+const Alert = ({validity}) => {
 
     return (
    <Container maxWidth="xl" id="alertContainer">
     <Paper id="alertPaper" elevation={4}>
     <Typography variant="h6" id="alertText">
-          Alerts here
+         { validity === true ?
+            'Sudoku is valid!'
+          : validity === false ?
+            'Sudoku is not valid!'
+            : ''
+          }
+
         </Typography>
     </Paper>
    </Container>

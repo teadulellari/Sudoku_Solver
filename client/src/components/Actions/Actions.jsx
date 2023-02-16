@@ -5,7 +5,7 @@ import Solve from "./Solve";
 import Timer from "./Timer";
 import "./actions.css";
 
-const Actions = ({gridVal}) => {
+const Actions = ({gridVal, setGridVal, validity, setValidity}) => {
   return (
     <Container maxWidth="xl" id="actionsContainer">
     <Paper elevation={4} id="actionsPaper">
@@ -14,9 +14,9 @@ const Actions = ({gridVal}) => {
           Actions:
         </Typography>
         <Divider className="divider" />
-        <Check gridVal={gridVal} />
+        <Check gridVal={gridVal} setValidity={setValidity}/>
         <Divider className="divider" />
-        <Solve  gridVal={gridVal}/>
+        <Solve  gridVal={gridVal} setGridVal= {setGridVal} validity={validity}/>
         <Divider className="divider" />
         <Timer />
       </form>

@@ -11,9 +11,13 @@ const SudokuGrid = ({ setGridVal }) => {
   const [gridVal, setLocalGridVal] = useState(
     Array.from(Array(rows), () => new Array(columns).fill(""))
   );
+
+  
   useEffect(() => {
     setGridVal(gridVal);
   }, [gridVal]);
+
+
   return (
     <div id="dataContainer" elevation={4}>
       {

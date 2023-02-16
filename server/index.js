@@ -35,8 +35,6 @@ database.once("connected", () => {
   console.log("Database Connected");
 });
 
-
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

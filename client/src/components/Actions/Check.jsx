@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { checkSudoku } from '../../api/index';
 
-const Check = ({ gridVal }) => {
+const Check = ({ gridVal, setValidity }) => {
 
   const navigate = useNavigate();
+  const [validity, setLocalValidity] = useState();
 
   const handleClick =  async (e) => {
     
@@ -16,14 +17,14 @@ const Check = ({ gridVal }) => {
     const response =  await checkSudoku(gridVal);
     console.log("This is the response")
     console.log(response.data)
-    if(response.data === true) {
-      console.log("Sudoku is valid");
-    } else{
-      console.log("Sudoku is not valid");
-    }
+    setLocalValidity(response.data);
     navigate('/check');
    
   };
+
+  useEffect(() => {
+    setValidity(validity);
+  }, [validity]);
 
     return (
         <Button 
