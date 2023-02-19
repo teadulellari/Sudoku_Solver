@@ -1,23 +1,35 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Paper, Typography, Container } from "@mui/material";
-import './alert.css'
+import "./alert.css";
 
-const Alert = ({validity}) => {
+const Alert = ({ validity, gridVal }) => {
+  const [showAlert, setShowAlert] = useState(false);
 
-    return (
-   <Container maxWidth="xl" id="alertContainer">
-    <Paper id="alertPaper" elevation={4}>
-    <Typography variant="h6" id="alertText">
-         { validity === true ?
-            'Sudoku is valid!'
-          : validity === false ?
-            'Sudoku is not valid!'
-            : ''
-          }
+  // useEffect(() => {
+  //   if ( gridVal.length > 0) {
+  //     setShowAlert(true);
+  //   } else {
+  //     setShowAlert(false);
+  //   }
+  // }, [showAlert]);
 
-        </Typography>
-    </Paper>
-   </Container>
-    );
-}
+  return (
+    <div>
+      <Container maxWidth="xl" id="alertContainer">
+        <Paper id="alertPaper" elevation={4}>
+          <Typography variant="h6" id="alertText">
+            {validity === true
+              ? "Sudoku is valid!"
+              : validity === false
+              ? "Sudoku is not valid!"
+              : validity === null
+              ? null
+              : null}
+          </Typography>
+        </Paper>
+      </Container>
+    </div>
+  );
+};
+
 export default Alert;

@@ -6,6 +6,8 @@ import Timer from "./Timer";
 import "./actions.css";
 
 const Actions = ({gridVal, setGridVal, validity, setValidity}) => {
+  console.log("this is the gridval in actions");
+  console.log(gridVal)
   return (
     <Container maxWidth="xl" id="actionsContainer">
     <Paper elevation={4} id="actionsPaper">
@@ -16,7 +18,7 @@ const Actions = ({gridVal, setGridVal, validity, setValidity}) => {
         <Divider className="divider" />
         <Check gridVal={gridVal} setValidity={setValidity}/>
         <Divider className="divider" />
-        <Solve  gridVal={gridVal} setGridVal= {setGridVal} validity={validity}/>
+        <Solve  gridVal={gridVal} setGridVal= {setGridVal}/>
         <Divider className="divider" />
         <Timer />
       </form>

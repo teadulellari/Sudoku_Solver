@@ -8,8 +8,11 @@ import SudokuGrid from "../Actions/SudokuGrid";
 import Alert from "../Actions/Alert";
 
 const Home = () => {
-  const [gridVal, setGridVal] = useState([]);
+  const [gridVal, setGridVal] = useState(Array.from(Array(9), () => new Array(9).fill("")));
   const [validity, setValidity] = useState();
+
+  console.log("this is gridval in Home")
+  console.log(gridVal)
 
   return (
     <Grow in>
@@ -20,13 +23,13 @@ const Home = () => {
         <div className="contentDiv">
           <div className="emptyDiv"></div>
           <div className="alertDiv">
-           <Alert validity={validity}/>
+           <Alert validity={validity} gridVal={gridVal}/>
           </div>
           <div className="sudokuDiv">
-            <SudokuGrid setGridVal={setGridVal} />
+            <SudokuGrid gridVal={gridVal} setGridVal={setGridVal} />
           </div>
           <div className="actionsDiv">
-            <Actions gridVal={gridVal} setGridVal={setGridVal} setValidity={setValidity} validity={validity} />
+            <Actions gridVal={gridVal} setGridVal={setGridVal} validity={validity} setValidity={setValidity}  />
           </div>
         </div>
       </Container>

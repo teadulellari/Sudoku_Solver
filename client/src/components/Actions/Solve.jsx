@@ -1,11 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { solveSudoku } from "../../api/index";
 
 const Solve = ({ gridVal, setGridVal }) => {
+  const rows = 9;
+  const columns = 9;
+  // console.log(gridVal);
   const navigate = useNavigate();
- const [updatedGridVal, setLocalGridVal] = useState();
+  const [localGridVal, setLocalGridVal] = useState(
+    Array.from(Array(rows), () => new Array(columns).fill(""))
+  );
+
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -15,15 +21,18 @@ const Solve = ({ gridVal, setGridVal }) => {
       // setLocalGridVal(response);
       console.log("This is the response");
       console.log(response.data);
+      setLocalGridVal(response.data);
+      console.log("this is local gridVal");
+      console.log(localGridVal);
       navigate("/solve");
     } catch (error) {
       console.log(error);
     }
   };
-  
-  // useEffect(() => {
-  //   setGridVal(updatedGridVal);
-  // }, [updatedGridVal])
+
+  useEffect(() => {
+    setGridVal(localGridVal);
+  }, [localGridVal]);
 
   return (
     <Button
