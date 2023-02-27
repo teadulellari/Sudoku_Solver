@@ -3,25 +3,26 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { checkSudoku } from "../../api/index";
 
-const Check = ({ gridVal, setValidity }) => {
+const Check = ({ gridVal, setValidity, setShowComponent }) => {
   const navigate = useNavigate();
   const [validity, setLocalValidity] = useState(null);
+
 
   const handleClick = async (e) => {
     e.preventDefault();
 
-    console.log("This is grid in the Check file");
-    console.log(gridVal);
     const response = await checkSudoku(gridVal);
-    console.log("This is the response");
-    console.log(response.data);
     setLocalValidity(response.data);
+    setShowComponent(true);
     navigate("/check");
   };
 
   useEffect(() => {
     setValidity(validity);
   }, [validity]);
+
+ 
+
 
   return (
     <Button

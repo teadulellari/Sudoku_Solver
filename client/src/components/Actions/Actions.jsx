@@ -5,7 +5,7 @@ import Solve from "./Solve";
 import Timer from "./Timer";
 import "./actions.css";
 
-const Actions = ({gridVal, setGridVal, validity, setValidity}) => {
+const Actions = ({gridVal, setGridVal, validity, setValidity, setShowComponent}) => {
   console.log("this is the gridval in actions");
   console.log(gridVal)
   return (
@@ -16,7 +16,7 @@ const Actions = ({gridVal, setGridVal, validity, setValidity}) => {
           Actions:
         </Typography>
         <Divider className="divider" />
-        <Check gridVal={gridVal} setValidity={setValidity}/>
+        <Check gridVal={gridVal} setValidity={setValidity} setShowComponent={setShowComponent}/>
         <Divider className="divider" />
         <Solve  gridVal={gridVal} setGridVal= {setGridVal}/>
         <Divider className="divider" />
