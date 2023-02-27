@@ -3,15 +3,7 @@ import { Paper, Typography, Container } from "@mui/material";
 import "./alert.css";
 
 const Alert = ({ validity, gridVal }) => {
-  const [showAlert, setShowAlert] = useState(false);
-
-  // useEffect(() => {
-  //   if ( gridVal.length > 0) {
-  //     setShowAlert(true);
-  //   } else {
-  //     setShowAlert(false);
-  //   }
-  // }, [showAlert]);
+  //const [showAlert, setShowAlert] = useState(false);
 
   return (
     <div>

@@ -5,7 +5,6 @@ import "./grid.css";
 const SudokuGrid = ({ gridVal, setGridVal }) => {
   const rows = 9;
   const columns = 9;
-  let reg = new RegExp("^[1-9]$");
   console.log("this is gridval in Sudokugrid");
   console.log(gridVal);
   //const [gridVal, setGridVal]= useState(Array(rows).fill(Array(columns).fill()));
@@ -20,6 +19,13 @@ const SudokuGrid = ({ gridVal, setGridVal }) => {
   useEffect(() => {
     setLocalGridVal(gridVal);
   }, [gridVal]);
+  
+  const handleKeyPress = (e, rowIndex, colIndex) => {
+    const keyValue = e.key;
+    if (!/^[0-9]*$/.test(keyValue)) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <div id="dataContainer" elevation={4}>
@@ -30,6 +36,7 @@ const SudokuGrid = ({ gridVal, setGridVal }) => {
             id="dataCell"
             key={`${rowIndex}${colIndex}`}
             value={localGridVal[rowIndex][colIndex]}
+            onKeyPress={(e) => handleKeyPress(e, rowIndex, colIndex)}
             onChange={(e) => {
               //const temp = localGridVal.map(x => x)
               //temp[rowIndex][colIndex] = e.target.value;
