@@ -95,8 +95,13 @@ export const sudokuCheck = (req, res) => {
 export const sudokuSolve = (req, res) => {
   const board = req.body;
   try {
-    const result = solve(board, 0, 0);
-    res.status(200).send(board);
+    if(!checkBoard(board)){
+      res.status(400).send();
+    }else{
+      const result = solve(board, 0, 0);
+      res.status(200).send(board);
+    }
+  
   } catch (error) {
     res.send(error);
   }
