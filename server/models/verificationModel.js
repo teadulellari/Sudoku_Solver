@@ -6,6 +6,6 @@ const verificationSchema = mongoose.Schema ({
     userId: { type: String, required: true}
 });
 
-const VerificatinModel = mongoose.model('VerificatinModel', verificationSchema);
+const VerificationModel = mongoose.model('VerificationModel', verificationSchema,"VerificationModel");
 
-export default VerificatinModel;
+export default VerificationModel;

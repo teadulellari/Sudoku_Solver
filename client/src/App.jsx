@@ -17,7 +17,7 @@ function App() {
         <Route path="/signup" exact element={<SignupView />} />
         <Route path="/check" exact element={<Home />} />
         <Route path="/solve" exact element={<Home />} />
-        <Route path="/signup/email" exact element={<Verify/>} />
+        <Route path="/verify/:uuid" exact element={<Verify/>} />
         </Routes>
       </Container>
     </BrowserRouter>

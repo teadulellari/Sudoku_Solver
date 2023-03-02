@@ -15,7 +15,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate } from "react-router-dom";
 import './register.css';
 import './login.css'
-import { signUp } from "../../api";
+import { signUp, verifyUser } from "../../api";
 
 const initialState = {
   firstName: "",
@@ -36,7 +36,7 @@ const Signup = () => {
     try {
       const response = await signUp(data);
     setData(response.data);
-    console.log(response.data)
+    console.log(response.data);
     navigate("/signup/email");
     } catch (error) {
       console.log(error);
@@ -51,7 +51,6 @@ const Signup = () => {
   const handleChange = (e) => {
       setData({...data, [e.target.name] : e.target.value});
   }
-
   
 
   return (
