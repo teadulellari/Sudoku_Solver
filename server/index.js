@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import routerSudoku from './routes/routerSudoku.js';
+import routerSignUp from './routes/routerSignUp.js';
 
 //create instance of the app
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 //mounting routes
 app.use('/api', routerSudoku);
+app.use('/api', routerSignUp);
 
 
 const mongoURI = process.env.MONGO_URI;

@@ -15,6 +15,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate } from "react-router-dom";
 import './register.css';
 import './login.css'
+import { signUp } from "../../api";
 
 const initialState = {
   firstName: "",
@@ -29,9 +30,18 @@ const Signup = () => {
   let navigate = useNavigate();
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/sudoku");
+    //here to send the email
+    try {
+      const response = await signUp(data);
+    setData(response.data);
+    console.log(response.data)
+    navigate("/signup/email");
+    } catch (error) {
+      console.log(error);
+    }
+    
   }
 
   const handleShowPassword = () => {
@@ -137,6 +147,7 @@ const Signup = () => {
               fullWidth
               variant="contained"
               color="primary"
+             
             >
               Sign up
             </Button>
