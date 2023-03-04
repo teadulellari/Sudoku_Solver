@@ -67,7 +67,7 @@ export const signUp = async (req, res) => {
         res.status(200).send(verifyUser.UUID);
       }
     });
-    console.log("g")
+  
 
   } catch (error) {
     console.log(error)
