@@ -28,6 +28,7 @@ const Verify = () => {
       } catch (error) {
         console.log(error);
         //if the verification is not successful we tell user to login again?
+        setAnswer('There was an error verifying your account.');
       }
     };
     verify();

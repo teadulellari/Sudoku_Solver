@@ -15,19 +15,45 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import  "./login.css";
 import { useNavigate } from "react-router-dom";
 import sudokuImg from "../../images/sudoku.png";
+import { logIn } from "../../api";
 
 const initialState = { email: "", password: "" };
 
-const Login = () => {
+const Login =  () => {
   // const navigate= useNavigate();
 
   const [data, setData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
+  console.log(responseMessage)
   let navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/sudoku');
+    try {
+      console.log(1)
+      const response = await logIn(data);
+      //setData(response.data)
+      console.log(2)
+      console.log(response.status)
+      if(response.status === 200){
+        setResponseMessage("")
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error);
+      if(error.response.status === 404){
+        setResponseMessage("This account doesn't exist. Please create an account.")
+        console.log(responseMessage)
+      } else if(error.response.status === 401){
+        setResponseMessage("Incorrect email or password. Please try again.")
+        console.log(responseMessage)
+      }else if(error.response.status === 403){
+        setResponseMessage("Check your email to activate your account.")
+        console.log(responseMessage)
+      }
+    }
+    
   };
 
   const handleSubmitSignup = () => {
@@ -51,6 +77,12 @@ const Login = () => {
   };
 
   return (
+    <div id="">
+      <div id="warningBox">
+     {responseMessage && (
+      <Typography variant="h6" id="warningMessage">{responseMessage} </Typography>
+    )}
+    </div>
     <Container component="main"  id ="container" maxWidth="xs">
       <Paper elevation={4} id="loginPaper">
         <form className="loginForm" onSubmit={handleSubmit}>
@@ -120,6 +152,7 @@ const Login = () => {
         </form>
       </Paper>
     </Container>
+    </div>
   );
 };
 export default Login;

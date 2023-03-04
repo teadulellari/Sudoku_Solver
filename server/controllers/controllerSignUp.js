@@ -18,9 +18,8 @@ let transporter = nodemailer.createTransport({
 });
 
 export const signUp = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
-  console.log("BEKO")
-  console.log(process.env.GMAIL_PASS)
+  const { firstName, lastName, email, password, repeatPassword } = req.body;
+
   try {
     // check if the user exists
     const existingUser = await UserModel.findOne({ email });
@@ -28,7 +27,7 @@ export const signUp = async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "User already exists." });
     }
-
+    if(password !== repeatPassword) return res.status(401).json({ message: "Passwords don't match" });
     // encrypt the password and save user in db
     const hashedPass = await bcrypt.hash(password, 12);
 

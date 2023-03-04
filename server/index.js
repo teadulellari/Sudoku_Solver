@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 import routerSudoku from './routes/routerSudoku.js';
 import routerSignUp from './routes/routerSignUp.js';
 import routerVerify from './routes/routerVerify.js'
+import routerLogIn from './routes/routerLogIn.js'
 //create instance of the app
 const app = express();
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(express.json());
 //mounting routes
 app.use('/api', routerSudoku);
 app.use('/api', routerSignUp);
+app.use('/api', routerLogIn);
 app.use('/api', routerVerify);
 
 

@@ -17,7 +17,7 @@ const Navbar = () => {
 
       <Toolbar id="navbarToolbar">
         <Hidden xsDown>
-          <Typography id="navbarName">Name here</Typography>
+         { <Typography id="navbarName">Name here</Typography>}
         </Hidden>
         <Button variant="contained" id="navbarLoginButton" color="secondary">
           Logout

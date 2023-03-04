@@ -15,14 +15,14 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate } from "react-router-dom";
 import './register.css';
 import './login.css'
-import { signUp, verifyUser } from "../../api";
+import { signUp} from "../../api";
 
 const initialState = {
   firstName: "",
   lastName: "",
   email: "",
   password: "",
-  confrimPassword: "",
+  repeatPassword: "",
 };
 const Signup = () => {
   const [data, setData] = useState(initialState);
@@ -43,6 +43,10 @@ const Signup = () => {
       
     } else if (response.status === 500){
       setResponseMessage("Something went wrong!");
+    } else if (response.status === 400) {
+      setResponseMessage("User already exists.");
+    }else if (response.status === 401) {
+      setResponseMessage("Passwords don't match" );
     }
     //navigate(`/verify/${response.data}`);
     } catch (error) {
@@ -58,6 +62,12 @@ const Signup = () => {
   const handleChange = (e) => {
       setData({...data, [e.target.name] : e.target.value});
   }
+  const handleSubmitLogin = () => {
+    
+    console.log("Going to login");
+    navigate('/login');
+    
+  };
   
 
   return (
@@ -133,7 +143,7 @@ const Signup = () => {
               <Divider className="divider" />
               <TextField
                 className="field"
-                name="password"
+                name="repeatPassword"
                 variant="outlined"
                 required
                 fullWidth
@@ -154,7 +164,7 @@ const Signup = () => {
                 Sign up
               </Button>
               <Divider className="divider" />
-              <Button variant="text" id="buttonField1">
+              <Button variant="text" id="buttonField1" onClick={handleSubmitLogin}>
                 Already have an account? Log in
               </Button>
             </Grid>
