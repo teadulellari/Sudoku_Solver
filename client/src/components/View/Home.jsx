@@ -7,10 +7,12 @@ import { Container } from "@mui/system";
 import SudokuGrid from "../Actions/SudokuGrid";
 import Alert from "../Actions/Alert";
 
+
 const Home = () => {
   const [gridVal, setGridVal] = useState(Array.from(Array(9), () => new Array(9).fill("")));
   const [validity, setValidity] = useState();
   const [showComponent, setShowComponent] = useState(false);
+ 
 
   console.log("this is gridval in Home")
   console.log(gridVal)
@@ -19,7 +21,7 @@ const Home = () => {
     <Grow in>
       <Container id="muiContainer" >
         <div className="navbarDiv">
-          <Navbar />
+          <Navbar  />
         </div>
         <div className="contentDiv">
           <div className="emptyDiv"></div>

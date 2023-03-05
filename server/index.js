@@ -15,6 +15,9 @@ dotenv.config();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
+//configure session middleware
+//app.use()
+
 
 //mounting routes
 app.use('/api', routerSudoku);

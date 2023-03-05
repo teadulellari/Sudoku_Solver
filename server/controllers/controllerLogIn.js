@@ -1,25 +1,27 @@
-import express from "express";
+import express, { application } from "express";
 const router = express.Router();
 import UserModel from "../models/userModel.js";
 import bcrypt from "bcryptjs";
+import session from 'express-session';
+
 
 export const logIn = async (req, res) => {
   const { email, password } = req.body;
  
   try {
     //check if the user exist in the user table
-    const findUser = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email });
     // if user doesn'to exist send the code 404
-    if (!findUser) {
+    if (!user) {
       return res.status(404).json({ message: "This user doesnt exist." });
     }
 
-    const userEmail = findUser.email;
-    const userPassword = findUser.password;
+    const userEmail = user.email;
+    const userPassword = user.password;
     const isMatch = await bcrypt.compare(password, userPassword);
     if (userEmail === email && isMatch ) {
-        if(findUser.isActive){
-            res.status(200).json({ message: "Ok" });
+        if(user.isActive){
+            res.status(200).send({ name:`${user.firstName} ${user.lastName}` });
         }else {
             res.status(403).json({ message: "Account is not verififed." });
         }

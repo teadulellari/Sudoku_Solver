@@ -9,3 +9,4 @@ export const signUp = (data) => API.post('http://localhost:5001/api/signup/email
 export const logIn = (data) => API.post('http://localhost:5001/api/login', data);
 export const verifyUser = (uuid) => API.get(`http://localhost:5001/api/verify/${uuid}`);
 
+

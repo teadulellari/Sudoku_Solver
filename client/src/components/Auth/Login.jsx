@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Container,
   Grid,
@@ -16,29 +16,30 @@ import  "./login.css";
 import { useNavigate } from "react-router-dom";
 import sudokuImg from "../../images/sudoku.png";
 import { logIn } from "../../api";
+import AuthContext from '../Contexts/AuthContext';
 
 const initialState = { email: "", password: "" };
 
 const Login =  () => {
   // const navigate= useNavigate();
-
   const [data, setData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
-  console.log(responseMessage)
+  const auth = useContext(AuthContext);
+
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(1)
       const response = await logIn(data);
-      //setData(response.data)
-      console.log(2)
       console.log(response.status)
       if(response.status === 200){
-        setResponseMessage("")
+        auth.setUserData(response.data); // set the response data in the context
+        console.log(response.data)
+        auth.setLoggedIn(true);
         navigate('/');
+        ///here we get the user data from the res
       }
     } catch (error) {
       console.log(error);
@@ -75,6 +76,9 @@ const Login =  () => {
     setShowPassword((showPassword) => !showPassword);
     
   };
+
+
+
 
   return (
     <div id="">
