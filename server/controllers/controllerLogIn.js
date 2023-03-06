@@ -2,18 +2,17 @@ import express, { application } from "express";
 const router = express.Router();
 import UserModel from "../models/userModel.js";
 import bcrypt from "bcryptjs";
-import session from 'express-session';
-
 
 export const logIn = async (req, res) => {
   const { email, password } = req.body;
+   req.session.user = {email: email}
  
   try {
     //check if the user exist in the user table
     const user = await UserModel.findOne({ email });
     // if user doesn'to exist send the code 404
     if (!user) {
-      return res.status(404).json({ message: "This user doesnt exist." });
+      return res.status(404).json({ message: "This user doesn't exist." });
     }
 
     const userEmail = user.email;
@@ -35,5 +34,19 @@ export const logIn = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
+export const checkSessionValidity = async (req, res) => {
+  const {user} = req.body
+   try {
+    if(req.session.user){
+      res.status(200).send("logged in")
+    }else{
+      res.status(401).send('Unauthorized');
+    }
+    
+   } catch (error) {
+    res.status(500).send(error);
+   }
+}
 
 export default router;

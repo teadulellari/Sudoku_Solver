@@ -84,6 +84,7 @@ const solve = (board, row, col) => {
 
 export const sudokuCheck = (req, res) => {
   const board = req.body;
+  console.log(req.session.user);
   try {
     const result = checkBoard(board);
     res.status(200).send(result);
