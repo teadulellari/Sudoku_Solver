@@ -20,7 +20,7 @@ const Actions = ({gridVal, setGridVal, validity, setValidity, setShowComponent})
         <Divider className="divider" />
         <Solve  gridVal={gridVal} setGridVal= {setGridVal}/>
         <Divider className="divider" />
-        <Timer />
+        <Timer validity={validity} />
       </form>
     </Paper>
     </Container>

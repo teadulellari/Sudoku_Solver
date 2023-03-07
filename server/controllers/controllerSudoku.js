@@ -1,5 +1,6 @@
 import express from "express";
 const router = express.Router();
+import { checkSessionValidity } from "./controllerLogIn.js";
 
 const isValid = (board, row, col, num) => {
   debugger;
@@ -84,10 +85,13 @@ const solve = (board, row, col) => {
 
 export const sudokuCheck = (req, res) => {
   const board = req.body;
-  console.log(req.session.user);
   try {
-    const result = checkBoard(board);
-    res.status(200).send(result);
+    if (req.session.user) {
+      const result = checkBoard(board);
+      res.status(200).send(result);
+    } else {
+      res.status(403).send("Session expired");
+    }
   } catch (error) {
     res.send(error);
   }
@@ -96,13 +100,16 @@ export const sudokuCheck = (req, res) => {
 export const sudokuSolve = (req, res) => {
   const board = req.body;
   try {
-    if(!checkBoard(board)){
-      res.status(400).send();
-    }else{
-      const result = solve(board, 0, 0);
-      res.status(200).send(board);
+    if (req.session.user) {
+      if (!checkBoard(board)) {
+        res.status(400).send();
+      } else {
+        const result = solve(board, 0, 0);
+        res.status(200).send(board);
+      }
+    } else {
+      res.status(403).send("Session expired");
     }
-  
   } catch (error) {
     res.send(error);
   }

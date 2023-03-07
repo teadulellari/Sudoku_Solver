@@ -7,22 +7,28 @@ const Check = ({ gridVal, setValidity, setShowComponent }) => {
   const navigate = useNavigate();
   const [validity, setLocalValidity] = useState(null);
 
-
   const handleClick = async (e) => {
     e.preventDefault();
-
-    const response = await checkSudoku(gridVal);
-    setLocalValidity(response.data);
-    setShowComponent(true);
-    navigate("/check");
+    try {
+      const response = await checkSudoku(gridVal);
+      setLocalValidity(response.data);
+      setShowComponent(true);
+      navigate("/check");
+      console.log(response.status);
+    } catch (error) {
+      if (error?.response?.status === 400) {
+        setLocalValidity(error.response.data);
+        console.log(error.response.status);
+      } else if (error?.response?.status === 403) {
+        navigate("/login");
+        console.log(error.response.status);
+      }
+    }
   };
 
   useEffect(() => {
     setValidity(validity);
   }, [validity]);
-
- 
-
 
   return (
     <Button

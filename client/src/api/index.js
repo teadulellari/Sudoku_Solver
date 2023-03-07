@@ -8,5 +8,5 @@ export const solveSudoku = (gridVal) => API.post('http://localhost:5001/api/solv
 export const signUp = (data) => API.post('http://localhost:5001/api/signup/email', data);
 export const logIn = (data) => API.post('http://localhost:5001/api/login', data);
 export const verifyUser = (uuid) => API.get(`http://localhost:5001/api/verify/${uuid}`);
-export const checkSessionValidity = (name) => API.get(`http://localhost:5001/api/checkSession/`, name)
+export const checkSessionValidity = () => API.get(`http://localhost:5001/api/checkSession/`)
 

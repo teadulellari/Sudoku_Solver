@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext} from "react";
 import {
   Container,
   Grid,
@@ -15,7 +15,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import sudokuImg from "../../images/sudoku.png";
-import { logIn, checkSessionValidity } from "../../api";
+import { logIn } from "../../api";
 import AuthContext from "../Contexts/AuthContext";
 
 const initialState = { email: "", password: "" };
@@ -34,11 +34,10 @@ const Login = () => {
     try {
       const response = await logIn(data);
       //console.log(response.status);
-      if (response.status === 200) {
+      if (response.status === 200 ) {
         auth.setUserData(response.data); // set the response data in the context
         auth.setLoggedIn(true);
         navigate("/");
-        ///here we get the user data from the res
       }
     } catch (error) {
       console.log(error);
@@ -59,20 +58,7 @@ const Login = () => {
     }
   };
 
-  //check for existing session
-  useEffect(() => {
-    const checkSession = async () => {
-      try { 
-        const response = await checkSessionValidity(auth.userData.name);
-        if (response.status === 200) {
-          auth.setLoggedIn(true);
-        }
-      } catch (error) {
-        auth.setLoggedIn(false);
-      }
-    };
-    checkSession();
-  }, []);
+
 
 
   const handleSubmitSignup = () => {

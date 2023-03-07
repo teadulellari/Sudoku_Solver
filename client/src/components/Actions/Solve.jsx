@@ -6,7 +6,6 @@ import { solveSudoku } from "../../api/index";
 const Solve = ({ gridVal, setGridVal }) => {
   const rows = 9;
   const columns = 9;
-  // console.log(gridVal);
   const navigate = useNavigate();
   const [localGridVal, setLocalGridVal] = useState(
     Array.from(Array(rows), () => new Array(columns).fill(""))
@@ -15,24 +14,28 @@ const Solve = ({ gridVal, setGridVal }) => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      console.log("This is grid in the Solve file");
-      console.log(gridVal);
       const response = await solveSudoku(gridVal);
-      // setLocalGridVal(response);
-      console.log("This is the response");
-      console.log(response.data);
       setLocalGridVal(response.data);
-      console.log("this is local gridVal");
-      console.log(localGridVal);
       navigate("/solve");
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        if (error.response.status === 400 || error.response.status === 403) {
+          setLocalGridVal(error.response.data);
+          if (error.response.status === 403) {
+            navigate('/login');
+          }
+        } else {
+          console.error("Error occurred while solving sudoku:", error);
+        }
+      } else {
+        console.error("Error occurred while solving sudoku:", error);
+      }
     }
   };
 
   useEffect(() => {
     setGridVal(localGridVal);
-  }, [localGridVal]);
+  }, [localGridVal, setGridVal]);
 
   return (
     <Button
