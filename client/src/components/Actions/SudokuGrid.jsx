@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import { TextField } from "@mui/material";
 import "./grid.css";
+import AuthContext from "../Contexts/AuthContext";
 
 const SudokuGrid = ({ gridVal, setGridVal, setShowComponent }) => {
   const rows = 9;
   const columns = 9;
+  const auth = useContext(AuthContext);
+  console.log(auth.solved)
   console.log("this is gridval in Sudokugrid");
   console.log(gridVal);
   //const [gridVal, setGridVal]= useState(Array(rows).fill(Array(columns).fill()));

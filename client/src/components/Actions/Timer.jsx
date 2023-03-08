@@ -1,28 +1,34 @@
-import React from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Button, Typography } from "@mui/material";
-import { useState } from "react";
+import AuthContext from "../Contexts/AuthContext";
 
-const Timer = ({validity}) => {
-  const [elapsedTime, setElapsedTime] = useState(0);
+const Timer = ({ validity }) => {
+  const [time, setTime] = useState(0);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const auth = useContext(AuthContext);
+  const intervalRef = useRef(null);
+  const startTimeRef = useRef(null);
 
-  const startTimer = () => {
-    let startTime = Date.now();
-    let intervalId = setInterval(() => {
-      setElapsedTime(Date.now() - startTime);
-    }, 1000);
-
-    // Replace the following with your actual action
-    setTimeout(() => {
-      clearInterval(intervalId);
-    }, 5000);
+  const startTimer = (e) => {
+    e.preventDefault();
+    if (timerRunning) {
+      clearInterval(intervalRef.current);
+      setTimerRunning(false);
+    } else {
+      startTimeRef.current = Date.now() - time;
+      intervalRef.current = setInterval(() => {
+        setTime(Date.now() - startTimeRef.current);
+      }, 1000);
+      setTimerRunning(true);
+    }
   };
 
   const stopTimer = () => {
-    //stopping the time when the sudoku is full and valid, s owhen it is solved and valid
-    if(validity){
-
+    if (validity && auth.solved && timerRunning) {
+      clearInterval(intervalRef.current);
+      setTimerRunning(false);
     }
-  }
+  };
 
   const formatTime = (time) => {
     let minutes = Math.floor(time / 60000);
@@ -32,20 +38,27 @@ const Timer = ({validity}) => {
     }`;
   };
 
-    return (
-      <>
-        <Button
-          className="timeButton"
-          type="submit"
-          variant="contained"
-          color="secondary"
-          onClick={startTimer}
-        >
-          Start Timer{" "}
-        </Button>
-        <Typography>{formatTime(elapsedTime)}</Typography>
-      </>
-    );
-  
+  useEffect(() => {
+    window.addEventListener("beforeunload", stopTimer);
+    return () => {
+      window.removeEventListener("beforeunload", stopTimer);
+    };
+  }, [validity, auth.solved, timerRunning]);
+
+  return (
+    <>
+      <Button
+        className="timeButton"
+        type="submit"
+        variant="contained"
+        color="secondary"
+        onClick={startTimer}
+      >
+        {timerRunning ? "Stop Timer" : "Start Timer"}
+      </Button>
+      <Typography>{formatTime(time)}</Typography>
+    </>
+  );
 };
+
 export default Timer;

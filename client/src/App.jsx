@@ -14,11 +14,10 @@ import AuthContext from './components/Contexts/AuthContext';
 function App() {
   const [loggedIn, setLoggedIn] = useState(null);
   const [userData, setUserData] = useState(null);
-  const [sessionData, setSessionData] = useState(null)
 
   return (
     <BrowserRouter>
-      <AuthContext.Provider value={{loggedIn, userData, sessionData, setLoggedIn, setUserData, setSessionData}}>
+      <AuthContext.Provider value={{loggedIn, userData, setLoggedIn, setUserData,}}>
         <Container id="muiContainer">
           <Routes>
             <Route path="/" exact element={<Home />} />
