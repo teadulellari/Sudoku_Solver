@@ -17,8 +17,7 @@ const Home = () => {
   );
   const [validity, setValidity] = useState();
   const [showComponent, setShowComponent] = useState(false);
-  console.log("this is gridval in Home");
-  console.log(gridVal);
+
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 

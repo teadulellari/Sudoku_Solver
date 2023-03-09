@@ -1,24 +1,26 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { solveSudoku } from "../../api/index";
-
-const Solve = ({ gridVal, setGridVal, timerRunning }) => {
+import mitt from 'mitt';
+const emitter = mitt();
+const Solve = ({ gridVal, setGridVal }) => {
   const rows = 9;
   const columns = 9;
   const navigate = useNavigate();
   const [localGridVal, setLocalGridVal] = useState(
     Array.from(Array(rows), () => new Array(columns).fill(""))
   );
-
-
+ 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
+     
       const response = await solveSudoku(gridVal);
       setLocalGridVal(response.data);
       navigate("/solve");
-
+       emitter.emit('functionCalled');
+       
     } catch (error) {
       if (error.response) {
         if (error.response.status === 400 || error.response.status === 403) {
@@ -52,4 +54,4 @@ const Solve = ({ gridVal, setGridVal, timerRunning }) => {
   );
 };
 
-export default Solve;
+export  {Solve, emitter };

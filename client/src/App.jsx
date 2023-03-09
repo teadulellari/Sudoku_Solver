@@ -17,7 +17,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AuthContext.Provider value={{loggedIn, userData, setLoggedIn, setUserData,}}>
+      <AuthContext.Provider value={{loggedIn, userData, setLoggedIn, setUserData}}>
         <Container id="muiContainer">
           <Routes>
             <Route path="/" exact element={<Home />} />

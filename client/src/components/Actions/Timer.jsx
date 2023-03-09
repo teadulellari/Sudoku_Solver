@@ -1,11 +1,9 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Typography } from "@mui/material";
-import AuthContext from "../Contexts/AuthContext";
-
-const Timer = ({ validity }) => {
+import { emitter } from "./Solve";
+const Timer = () => {
   const [time, setTime] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
-  const auth = useContext(AuthContext);
   const intervalRef = useRef(null);
   const startTimeRef = useRef(null);
 
@@ -23,12 +21,18 @@ const Timer = ({ validity }) => {
     }
   };
 
-  const stopTimer = () => {
-    if (validity && auth.solved && timerRunning) {
-      clearInterval(intervalRef.current);
-      setTimerRunning(false);
-    }
-  };
+  useEffect(() => {
+    const stopTimer = () => {
+      if (timerRunning) {
+        clearInterval(intervalRef.current);
+        setTimerRunning(false);
+      }
+    };
+    emitter.on("functionCalled", stopTimer); //here
+    return () => {
+      emitter.off("functionCalled", stopTimer);
+    };
+  }, [timerRunning]);
 
   const formatTime = (time) => {
     let minutes = Math.floor(time / 60000);
@@ -37,13 +41,6 @@ const Timer = ({ validity }) => {
       seconds < 10 ? "0" + seconds : seconds
     }`;
   };
-
-  useEffect(() => {
-    window.addEventListener("beforeunload", stopTimer);
-    return () => {
-      window.removeEventListener("beforeunload", stopTimer);
-    };
-  }, [validity, auth.solved, timerRunning]);
 
   return (
     <>
