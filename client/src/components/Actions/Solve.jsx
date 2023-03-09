@@ -3,7 +3,8 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { solveSudoku } from "../../api/index";
 import mitt from 'mitt';
-const emitter = mitt();
+const emitterSolve = mitt();
+
 const Solve = ({ gridVal, setGridVal }) => {
   const rows = 9;
   const columns = 9;
@@ -19,7 +20,7 @@ const Solve = ({ gridVal, setGridVal }) => {
       const response = await solveSudoku(gridVal);
       setLocalGridVal(response.data);
       navigate("/solve");
-       emitter.emit('functionCalled');
+      emitterSolve.emit('solveStopTimer');
        
     } catch (error) {
       if (error.response) {
@@ -54,4 +55,4 @@ const Solve = ({ gridVal, setGridVal }) => {
   );
 };
 
-export  {Solve, emitter };
+export  { Solve, emitterSolve };

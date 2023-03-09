@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Button, Typography } from "@mui/material";
-import { emitter } from "./Solve";
+import { emitterSolve } from "./Solve";
+import { emitterCheck } from "./Check";
+
 const Timer = () => {
   const [time, setTime] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
@@ -28,11 +30,16 @@ const Timer = () => {
         setTimerRunning(false);
       }
     };
-    emitter.on("functionCalled", stopTimer); //here
+    console.log(1);
+    emitterCheck.on("checkStopTimer", stopTimer); 
+    console.log(2);
+    emitterSolve.on("solveStopTimer", stopTimer);
+    console.log(3);
     return () => {
-      emitter.off("functionCalled", stopTimer);
+      emitterCheck.off("checkStopTimer", stopTimer);
+      emitterSolve.off("solveStopTimer", stopTimer);
     };
-  }, [timerRunning]);
+  }, [timerRunning, clearInterval]);
 
   const formatTime = (time) => {
     let minutes = Math.floor(time / 60000);

@@ -1,6 +1,6 @@
 import { Grid, Paper, Typography, Divider, Container } from "@mui/material";
 import React from "react";
-import Check from "./Check";
+import {Check} from "./Check";
 import {Solve} from "./Solve";
 import Timer from "./Timer";
 import "./actions.css";

@@ -58,9 +58,6 @@ const Login = () => {
     }
   };
 
-
-
-
   const handleSubmitSignup = () => {
     console.log("Going to signUp");
     navigate("/signup");
@@ -68,13 +65,20 @@ const Login = () => {
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-
     console.log(data);
   };
 
   const handleShowPassword = () => {
     setShowPassword((showPassword) => !showPassword);
   };
+
+  const handleForgotPassword = async (data) => {
+    try {
+      // const response = await restorePassword();
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <div id="">
@@ -144,7 +148,7 @@ const Login = () => {
                 Log in
               </Button>
               <Divider className="divider" />
-              <Button variant="text" id="buttonField1">
+              <Button variant="text" id="buttonField1" onClick={handleForgotPassword}>
                 Forgot your password?
               </Button>
               <Button

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { checkSudoku } from "../../api/index";
+import mitt from 'mitt';
+const emitterCheck = mitt();
 
 
 const Check = ({ gridVal, setValidity, setShowComponent }) => {
@@ -15,7 +17,13 @@ const Check = ({ gridVal, setValidity, setShowComponent }) => {
       setLocalValidity(response.data);
       setShowComponent(true);
       navigate("/check");
-      console.log(response.status);
+      //check if the component is full 
+      if(response.data === true  && isGridFull(gridVal)){
+        //emit the function to stop the timer runnning
+        emitterCheck.emit('checkStopTimer');
+      }
+
+
     } catch (error) {
       if (error?.response?.status === 400) {
         setLocalValidity(error.response.data);
@@ -26,6 +34,12 @@ const Check = ({ gridVal, setValidity, setShowComponent }) => {
       }
     }
   };
+
+
+  //check if grid is full 
+  function isGridFull(gridVal) {
+    return gridVal.map(row => row.every(cell => cell !== "")).every(val => val);
+  }
 
   useEffect(() => {
     setValidity(validity);
@@ -44,4 +58,4 @@ const Check = ({ gridVal, setValidity, setShowComponent }) => {
   );
 };
 
-export default Check;
+export  {Check, emitterCheck };
