@@ -8,6 +8,8 @@ import routerSignUp from './routes/routerSignUp.js';
 import routerVerify from './routes/routerVerify.js'
 import routerLogIn from './routes/routerLogIn.js'
 import routerCheckSessionValidity  from './routes/routerLogIn.js';
+import routerChechUser from './routes/routerCheckUser.js';
+import routerRecoverPassword from './routes/routerCheckUser.js';
 import session from "express-session";
 import { v4 as uuidv4 } from "uuid";
 //create instance of the app
@@ -35,6 +37,8 @@ app.use('/api', routerSignUp);
 app.use('/api', routerLogIn);
 app.use('/api', routerVerify);
 app.use('/api', routerCheckSessionValidity);
+app.use('/api', routerChechUser);
+app.use('/api', routerRecoverPassword);
 
 
 

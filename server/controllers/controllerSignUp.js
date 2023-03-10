@@ -34,7 +34,7 @@ export const signUp = async (req, res) => {
     const saveUser = await UserModel.create({
       firstName: firstName,
       lastName: lastName,
-      email,
+      email: email,
       password: hashedPass,
       isActive: false,
     });

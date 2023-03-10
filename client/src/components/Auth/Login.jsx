@@ -73,11 +73,7 @@ const Login = () => {
   };
 
   const handleForgotPassword = async (data) => {
-    try {
-      // const response = await restorePassword();
-    } catch (error) {
-      
-    }
+    navigate("/recoveryEmail");
   }
 
   return (

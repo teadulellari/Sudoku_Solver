@@ -10,6 +10,8 @@ import Verify from "./components/Auth/Verify";
 import { Container } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthContext from './components/Contexts/AuthContext';
+import ForgetPassword from './components/Auth/ForgetPassword';
+import RecoverPassword from './components/Auth/RecoverPassword';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(null);
@@ -27,6 +29,8 @@ function App() {
             <Route path="/solve" exact element={<Home />} />
             <Route path="/verify/:uuid" exact element={<Verify />} />
             <Route path="/user/:uuid" exact element={<Home />} />
+            <Route path="/recoveryEmail" exact element={<ForgetPassword />} />
+            <Route path="/recoverAccount/:id" exact element={<RecoverPassword />} />
           </Routes>
         </Container>
       </AuthContext.Provider>
