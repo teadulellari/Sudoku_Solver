@@ -1,9 +1,9 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
 
-import {logIn, checkSessionValidity} from '../controllers/controllerLogIn.js';
+import { logIn, checkSessionValidity } from "../controllers/controllerLogIn.js";
 
-router.post('/login', logIn);
-router.get('/checkSession', checkSessionValidity);
+router.post("/login", logIn);
+router.get("/checkSession", checkSessionValidity);
 
 export default router;

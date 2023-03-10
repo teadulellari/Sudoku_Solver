@@ -10,30 +10,30 @@
     margin: auto;
 }*/
 #actionsPaper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 400px;
-    width: 250px;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+  width: 250px;
+  margin: auto;
 }
 #actionsForm {
-    width: fit-content;
-    border: none;
-    margin: auto;
-    margin: 10px 0;
+  width: fit-content;
+  border: none;
+  margin: auto;
+  margin: 10px 0;
 }
 
 #actionsTitle {
-    color: pink;
-    text-align: center;
-    margin: auto;
+  color: pink;
+  text-align: center;
+  margin: auto;
 }
 
 #divider {
-    border: 0;
-    border-bottom-width: 0;
-    visibility: hidden;
+  border: 0;
+  border-bottom-width: 0;
+  visibility: hidden;
 }

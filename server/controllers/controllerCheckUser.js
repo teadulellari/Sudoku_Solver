@@ -4,7 +4,7 @@ import UserModel from "../models/userModel.js";
 import RecoveryModel from "../models/recoveryModel.js";
 import nodemailer from "nodemailer";
 import * as dotenv from "dotenv";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 dotenv.config();
 
@@ -12,74 +12,74 @@ dotenv.config();
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "teadulellari@gmail.com",
+    user:"bestsudokusolver@gmail.com",
     pass: process.env.GMAIL_PASS,
   },
 });
 
 export const checkUser = async (req, res) => {
   const email = decodeURIComponent(req.query.email);
-  console.log(email);
 
   try {
     //check if user is in database
-    const user = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email: email });
 
-    if (!user) return res.status(200);
-    console.log(user?._id.toString());
-    
+    if (!user) return res.status(200).send();
 
     const saveRecovery = await RecoveryModel.create({
-        UUID: uuidv4(),
-        date: new Date(Date.now()),
-        userId: user._id,
-      });
-     
+      UUID: uuidv4(),
+      date: new Date(Date.now()),
+      userId: user._id,
+    });
 
     //send email
     let mailOptions = {
-      from: "teadulellari@gmail.com",
-      to: "teadulellari@gmail.com",
+      from: "bestsudokusolver@gmail.com",
+      to: user.email,
       subject: "Account Recovery  Email",
       text: `Click the following link to reset your password  http://localhost:3000/recoverAccount/${saveRecovery?.UUID.toString()}`,
     };
 
     // verify the user with email
     transporter.sendMail(mailOptions, (error) => {
-      res.status(200);
+      res.status(200).send();
     });
   } catch (error) {
     res.send(error);
   }
 };
 
-
 export const recoverPassword = async (req, res) => {
-    const id = req.body.id;
-    const data = req.body.data;
-    console.log(req.body.id);
-    console.log(data);
+  const id = req.body.id;
+  const data = req.body.data;
 
-    try {
-        //find and replace passw where id is this
+  try {
+    //find and replace passw where id is this
     const hashedPassword = await bcrypt.hash(data.password, 12);
-    if(data.password !== data.repeatPassword) return res.status(401).send("Passwords don't match");
-  
-    const revoveryData = await RecoveryModel.findById(id);
-    if(!revoveryData) return res.status(404).send("No data");
+    const recoveryData = await RecoveryModel.findOne({ UUID: id });
+
+    if (!recoveryData) return res.status(404).send("No data");
     //if less than 24 hours you can change it
-    const lastChecked = revoveryData.date;
+    const lastChecked = recoveryData.date;
     const dateNow = new Date(Date.now());
     const hoursSinceLastChecked = (dateNow - lastChecked) / (1000 * 60 * 60);
-    if(hoursSinceLastChecked < 24){
-        const user = await UserModel.findByIdAndUpdate(id, {password: hashedPassword});
-        console.log(user.password)
-        res.status(200).send("Password updated.");
+    if (hoursSinceLastChecked < 24 && !recoveryData.hasExpired) {
+      const user = await UserModel.findOneAndUpdate(
+        { _id: recoveryData.userId },
+        {
+          password: hashedPassword,
+        }
+      );
+      await RecoveryModel.findByIdAndUpdate(recoveryData._id, {
+        hasExpired: true,
+      });
+      res.status(200).send("Password updated.");
+    } else {
+      res.status(403).send("Forbidden");
     }
-    
-    } catch (error) {
-        res.status(500).send("something went wrong");
-    }
-}
+  } catch (error) {
+    res.status(500).send("Something went wrong.");
+  }
+};
 
 export default router;

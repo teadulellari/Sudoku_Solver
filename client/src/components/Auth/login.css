@@ -72,8 +72,6 @@
   margin-bottom: 20px;
 }
 
-
-
 .loginForm {
   display: flex;
   flex-direction: column;
@@ -90,13 +88,11 @@
 #warningMessage {
   color: red;
   margin: auto;
-  
 }
 
 #warningBox {
-  display: flex; 
+  display: flex;
   flex-direction: row;
   align-items: center;
   width: auto;
 }
-

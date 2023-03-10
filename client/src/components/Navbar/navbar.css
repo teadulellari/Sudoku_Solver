@@ -1,31 +1,26 @@
 .MuiContainer {
-    position: sticky;
-    height: 50px;
-    width: inherit;
+  position: sticky;
+  height: 50px;
+  width: inherit;
 }
-
 
 #navbar {
-padding-bottom: 50px;
-height: 5px;
+  padding-bottom: 50px;
+  height: 5px;
 }
 #navbarAppBar {
-    float: left;
-    
+  float: left;
 }
 
-
 #navbarToolbar {
-   float: right;
-
+  float: right;
 }
 
 #logo {
-    height: 60px;
-    width: 60px;
-    
-  }
+  height: 60px;
+  width: 60px;
+}
 
-  #navbarName {
-    margin-right: 30px;
-  }
+#navbarName {
+  margin-right: 30px;
+}

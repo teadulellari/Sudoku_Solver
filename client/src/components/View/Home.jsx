@@ -35,7 +35,6 @@ const Home = () => {
         if (!auth.loggedIn) {
           const response = await checkSessionValidity(auth?.userData);
           if (response.status === 200) {
-            console.log(response.status);
             auth.setLoggedIn(true);
             auth.setUserData(response.data);
             navigate("/");
@@ -43,7 +42,7 @@ const Home = () => {
         }
       } catch (error) {
         auth.setLoggedIn(false);
-        console.log(error);
+
         navigate("/login");
       }
     };

@@ -6,11 +6,7 @@ const LoginView = () => {
   return (
     <Container>
       <Grid>
-        <AppBar
-          className="appBar"
-          position="static"
-          color="primary"
-        />
+        <AppBar className="appBar" position="static" color="primary" />
         <Login />
       </Grid>
     </Container>

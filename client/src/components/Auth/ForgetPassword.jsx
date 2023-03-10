@@ -9,31 +9,30 @@ import {
   Divider,
 } from "@mui/material";
 import "./login.css";
-import { useNavigate } from "react-router-dom";
-import { logIn } from "../../api";
 import { checkUser } from "../../api";
 let initialState = { email: "" };
 
 const ForgetPassword = () => {
   const [data, setData] = useState(initialState);
+  const [answer, setAnswer] = useState("");
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     //get request to check if
     const encodedEmail = encodeURIComponent(data.email);
-    console.log(encodedEmail);
-    console.log(data);
-    const result = await checkUser(encodedEmail);
+
+    await checkUser(encodedEmail);
+    setAnswer("If this account exist, check your email");
   };
 
   return (
     <Container component="main" id="container" maxWidth="xs">
       <Paper elevation={4} id="loginPaper">
+        <Typography>{answer}</Typography>
         <form className="loginForm" onSubmit={handleSubmit}>
           <Grid>
             <Typography variant="h6" id="loginTitle">

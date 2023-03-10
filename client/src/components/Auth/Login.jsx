@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import {
   Container,
   Grid,
@@ -33,39 +33,32 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await logIn(data);
-      //console.log(response.status);
-      if (response.status === 200 ) {
+      //
+      if (response.status === 200) {
         auth.setUserData(response.data); // set the response data in the context
         auth.setLoggedIn(true);
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
       if (error?.response?.status === 404) {
         setResponseMessage(
           "This account doesn't exist. Please create an account."
         );
-        console.log(responseMessage);
       } else if (error?.response?.status === 401) {
         setResponseMessage("Incorrect email or password. Please try again.");
-        console.log(responseMessage);
       } else if (error?.response?.status === 403) {
         setResponseMessage("Check your email to activate your account.");
-        console.log(responseMessage);
-      }else{
-        console.log(error);
+      } else {
       }
     }
   };
 
   const handleSubmitSignup = () => {
-    console.log("Going to signUp");
     navigate("/signup");
   };
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
   };
 
   const handleShowPassword = () => {
@@ -74,7 +67,7 @@ const Login = () => {
 
   const handleForgotPassword = async (data) => {
     navigate("/recoveryEmail");
-  }
+  };
 
   return (
     <div id="">
@@ -144,7 +137,11 @@ const Login = () => {
                 Log in
               </Button>
               <Divider className="divider" />
-              <Button variant="text" id="buttonField1" onClick={handleForgotPassword}>
+              <Button
+                variant="text"
+                id="buttonField1"
+                onClick={handleForgotPassword}
+              >
                 Forgot your password?
               </Button>
               <Button

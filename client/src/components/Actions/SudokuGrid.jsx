@@ -11,11 +11,11 @@ const SudokuGrid = ({ gridVal, setGridVal, setShowComponent }) => {
 
   useEffect(() => {
     setGridVal(localGridVal);
-  }, [localGridVal]);
+  }, [localGridVal,setGridVal]);
 
   useEffect(() => {
     setLocalGridVal(gridVal);
-  }, [gridVal]);
+  }, [gridVal,setLocalGridVal]);
 
   return (
     <div id="dataContainer" elevation={4}>
@@ -43,8 +43,6 @@ const SudokuGrid = ({ gridVal, setGridVal, setShowComponent }) => {
                 })
               );
               setShowComponent(false);
-              console.log("this is grid");
-              console.log(localGridVal);
             }}
           />
         ))

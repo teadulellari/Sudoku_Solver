@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { solveSudoku } from "../../api/index";
-import mitt from 'mitt';
+import mitt from "mitt";
 const emitterSolve = mitt();
 
 const Solve = ({ gridVal, setGridVal }) => {
@@ -12,16 +12,14 @@ const Solve = ({ gridVal, setGridVal }) => {
   const [localGridVal, setLocalGridVal] = useState(
     Array.from(Array(rows), () => new Array(columns).fill(""))
   );
- 
+
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-     
       const response = await solveSudoku(gridVal);
       setLocalGridVal(response.data);
       navigate("/solve");
-      emitterSolve.emit('solveStopTimer');
-       
+      emitterSolve.emit("solveStopTimer");
     } catch (error) {
       if (error.response) {
         if (error.response.status === 400 || error.response.status === 403) {
@@ -55,4 +53,4 @@ const Solve = ({ gridVal, setGridVal }) => {
   );
 };
 
-export  { Solve, emitterSolve };
+export { Solve, emitterSolve };

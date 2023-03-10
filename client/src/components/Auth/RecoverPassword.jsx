@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Grid,
@@ -13,13 +13,12 @@ import {
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import "./login.css";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { recoverPass } from "../../api";
 
 let initialState = { password: "", repeatPassword: "" };
 
 const RecoverPassword = () => {
-  const location = useLocation();
   const { id } = useParams();
   const navigate = useNavigate();
   const [answer, setAnswer] = useState("");
@@ -28,15 +27,17 @@ const RecoverPassword = () => {
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        console.log(id)
+      if (data.password !== data.repeatPassword) {
+        throw new Error("Passwords don't match.");
+      }
+
       const response = await recoverPass(id, data);
-      console.log(response.status);
+
       if (response.status === 200) {
         setAnswer("Your credentials were saved, please login");
         setTimeout(() => {
@@ -44,9 +45,12 @@ const RecoverPassword = () => {
         }, 3000); // delay navigation by 30 seconds
       }
     } catch (error) {
-      console.log(error);
-      //if the verification is not successful we tell user to login again?
-      setAnswer("Something went wrong.");
+      if (error.name !== "AxiosError") setAnswer(error.message);
+      else if (error.response.status === 403) {
+        setAnswer("The recovery link has expired");
+      } else {
+        setAnswer("Something went wrong.");
+      }
     }
   };
 

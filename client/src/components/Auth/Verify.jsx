@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { Container, Typography } from "@mui/material";
 import { verifyUser } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const Verify = () => {
-  const location = useLocation();
   const { uuid } = useParams();
   const navigate = useNavigate();
   const [answer, setAnswer] = useState("");
@@ -14,11 +13,11 @@ const Verify = () => {
     const verify = async () => {
       try {
         const response = await verifyUser(uuid);
-        console.log(response.data.message);
+
         if (response.status === 200) {
           setAnswer("Your account is activated, please login");
           setTimeout(() => {
-            navigate('/login');
+            navigate("/login");
           }, 3000); // delay navigation by 30 seconds
         } else if (response.status === 401) {
           setAnswer("Your token has expired");
@@ -26,9 +25,8 @@ const Verify = () => {
           setAnswer("Your account doesn't exist");
         }
       } catch (error) {
-        console.log(error);
         //if the verification is not successful we tell user to login again?
-        setAnswer('There was an error verifying your account.');
+        setAnswer("There was an error verifying your account.");
       }
     };
     verify();

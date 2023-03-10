@@ -1,52 +1,48 @@
-#muiContainer{
-    margin: auto;
+#muiContainer {
+  margin: auto;
 }
 
 .contentDiv {
-    display: grid;
-    column-gap: 30px;
-    grid-template-columns: 20% 60% 20%;
-    grid-template-rows: auto auto;
-    align-items: center;
-    height: 90%;
-    width: 80%;
-  
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: auto auto;
+  align-items: center;
+  height: 90%;
+  width: 80%;
 }
 
 .alertDiv {
-    display: flex;
-    grid-row: 1;
-    grid-column: 2;
-    text-align: flex-end;
-    align-items: flex-end;
-    justify-content: flex-end;
-    width: inherit;
+  display: flex;
+  grid-row: 1;
+  grid-column: 2;
+  text-align: flex-end;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: inherit;
 }
 
 .emptyDiv {
-    grid-row: 2;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: inherit;
-
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
 }
 
 .sudokuDiv {
-    
-    grid-row: 2;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: inherit;
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
 }
 
 .actionsDiv {
-    grid-row: 2;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-   
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }

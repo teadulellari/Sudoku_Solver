@@ -3,7 +3,6 @@
 }
 
 .App-logo {
-  
   pointer-events: none;
 }
 
@@ -39,7 +38,7 @@
 #root {
   height: 100vh;
 }
-#muiContainer{
+#muiContainer {
   height: inherit;
   width: inherit;
   padding: 0;

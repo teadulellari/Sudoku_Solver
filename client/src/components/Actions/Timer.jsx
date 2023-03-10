@@ -30,16 +30,16 @@ const Timer = () => {
         setTimerRunning(false);
       }
     };
-    console.log(1);
-    emitterCheck.on("checkStopTimer", stopTimer); 
-    console.log(2);
+
+    emitterCheck.on("checkStopTimer", stopTimer);
+
     emitterSolve.on("solveStopTimer", stopTimer);
-    console.log(3);
+
     return () => {
       emitterCheck.off("checkStopTimer", stopTimer);
       emitterSolve.off("solveStopTimer", stopTimer);
     };
-  }, [timerRunning, clearInterval]);
+  }, [timerRunning]);
 
   const formatTime = (time) => {
     let minutes = Math.floor(time / 60000);

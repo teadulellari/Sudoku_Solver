@@ -13,9 +13,9 @@ import {
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate } from "react-router-dom";
-import './register.css';
-import './login.css'
-import { signUp} from "../../api";
+import "./register.css";
+import "./login.css";
+import { signUp } from "../../api";
 
 const initialState = {
   firstName: "",
@@ -30,45 +30,38 @@ const Signup = () => {
   const [responseMessage, setResponseMessage] = useState("");
   let navigate = useNavigate();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     //here to send the email
     try {
       const response = await signUp(data);
-    setData(response.data);
-    console.log(response.status);
-    if(response.status === 200) {
-      setResponseMessage("We have registred your account. Check your email to verify your account.");
-      
-    } else if (response.status === 500){
-      setResponseMessage("Something went wrong!");
-    } else if (response.status === 400) {
-      setResponseMessage("User already exists.");
-    }else if (response.status === 401) {
-      setResponseMessage("Passwords don't match" );
-    }
-    //navigate(`/verify/${response.data}`);
-    } catch (error) {
-      console.log(error);
-    }
-    
-  }
+      setData(response.data);
+
+      if (response.status === 200) {
+        setResponseMessage(
+          "We have registred your account. Check your email to verify your account."
+        );
+      } else if (response.status === 500) {
+        setResponseMessage("Something went wrong!");
+      } else if (response.status === 400) {
+        setResponseMessage("User already exists.");
+      } else if (response.status === 401) {
+        setResponseMessage("Passwords don't match");
+      }
+      //navigate(`/verify/${response.data}`);
+    } catch (error) {}
+  };
 
   const handleShowPassword = () => {
     setShowPassword((showPassword) => !showPassword);
-  }
+  };
 
   const handleChange = (e) => {
-      setData({...data, [e.target.name] : e.target.value});
-  }
-  const handleSubmitLogin = () => {
-    
-    console.log("Going to login");
-    navigate('/login');
-    
+    setData({ ...data, [e.target.name]: e.target.value });
   };
-  
+  const handleSubmitLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <Container id="container">
@@ -134,7 +127,11 @@ const Signup = () => {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton onClick={handleShowPassword}>
-                        {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                        {showPassword ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   ),
@@ -164,7 +161,11 @@ const Signup = () => {
                 Sign up
               </Button>
               <Divider className="divider" />
-              <Button variant="text" id="buttonField1" onClick={handleSubmitLogin}>
+              <Button
+                variant="text"
+                id="buttonField1"
+                onClick={handleSubmitLogin}
+              >
                 Already have an account? Log in
               </Button>
             </Grid>

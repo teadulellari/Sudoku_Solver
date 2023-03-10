@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { checkSudoku } from "../../api/index";
-import mitt from 'mitt';
+import mitt from "mitt";
 const emitterCheck = mitt();
-
 
 const Check = ({ gridVal, setValidity, setShowComponent }) => {
   const navigate = useNavigate();
@@ -17,33 +16,30 @@ const Check = ({ gridVal, setValidity, setShowComponent }) => {
       setLocalValidity(response.data);
       setShowComponent(true);
       navigate("/check");
-      //check if the component is full 
-      if(response.data === true  && isGridFull(gridVal)){
+      //check if the component is full
+      if (response.data === true && isGridFull(gridVal)) {
         //emit the function to stop the timer runnning
-        emitterCheck.emit('checkStopTimer');
+        emitterCheck.emit("checkStopTimer");
       }
-
-
     } catch (error) {
       if (error?.response?.status === 400) {
         setLocalValidity(error.response.data);
-        console.log(error.response.status);
       } else if (error?.response?.status === 403) {
         navigate("/login");
-        console.log(error.response.status);
       }
     }
   };
 
-
-  //check if grid is full 
+  //check if grid is full
   function isGridFull(gridVal) {
-    return gridVal.map(row => row.every(cell => cell !== "")).every(val => val);
+    return gridVal
+      .map((row) => row.every((cell) => cell !== ""))
+      .every((val) => val);
   }
 
   useEffect(() => {
     setValidity(validity);
-  }, [validity]);
+  }, [validity,setValidity]);
 
   return (
     <Button
@@ -58,4 +54,4 @@ const Check = ({ gridVal, setValidity, setShowComponent }) => {
   );
 };
 
-export  {Check, emitterCheck };
+export { Check, emitterCheck };
