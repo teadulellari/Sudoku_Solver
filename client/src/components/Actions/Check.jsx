@@ -39,7 +39,7 @@ const Check = ({ gridVal, setValidity, setShowComponent }) => {
 
   useEffect(() => {
     setValidity(validity);
-  }, [validity,setValidity]);
+  }, [validity, setValidity]);
 
   return (
     <Button

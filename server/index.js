@@ -3,13 +3,13 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import * as dotenv from "dotenv";
-import routerSudoku from "./routes/routerSudoku.js";
-import routerSignUp from "./routes/routerSignUp.js";
-import routerVerify from "./routes/routerVerify.js";
-import routerLogIn from "./routes/routerLogIn.js";
-import routerCheckSessionValidity from "./routes/routerLogIn.js";
-import routerChechUser from "./routes/routerCheckUser.js";
-import routerRecoverPassword from "./routes/routerCheckUser.js";
+import sudokuRouter from "./routes/sudokuRouter.js";
+import signupRouter from "./routes/signupRouter.js";
+import verifyRouter from "./routes/verifyRouter.js";
+import loginRouter from "./routes/loginRouter.js";
+import routerCheckSessionValidity from "./routes/loginRouter.js";
+import checkUserRouter from "./routes/checkUserRouter.js";
+import recoverPasswordRouter from "./routes/checkUserRouter.js";
 import session from "express-session";
 import { v4 as uuidv4 } from "uuid";
 //create instance of the app
@@ -37,13 +37,13 @@ app.use(
 );
 
 //mounting routes
-app.use("/api", routerSudoku);
-app.use("/api", routerSignUp);
-app.use("/api", routerLogIn);
-app.use("/api", routerVerify);
+app.use("/api", sudokuRouter);
+app.use("/api", signupRouter);
+app.use("/api", loginRouter);
+app.use("/api", verifyRouter);
 app.use("/api", routerCheckSessionValidity);
-app.use("/api", routerChechUser);
-app.use("/api", routerRecoverPassword);
+app.use("/api", checkUserRouter);
+app.use("/api", recoverPasswordRouter);
 
 const mongoURI = process.env.MONGO_URI;
 const PORT = process.env.PORT;

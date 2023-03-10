@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-import { logIn, checkSessionValidity } from "../controllers/controllerLogIn.js";
+import { logIn, checkSessionValidity } from "../controllers/loginController.js";
 
 router.post("/login", logIn);
 router.get("/checkSession", checkSessionValidity);

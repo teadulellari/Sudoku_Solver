@@ -5,6 +5,11 @@ import VerificationModel from "../models/verificationModel.js";
 import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 import * as dotenv from "dotenv";
+import {
+  getExistingUser,
+  saveUser,
+  sendMail,
+} from "../service/signupService.js";
 dotenv.config();
 const router = express.Router();
 
@@ -22,7 +27,7 @@ export const signUp = async (req, res) => {
 
   try {
     // check if the user exists
-    const existingUser = await UserModel.findOne({ email });
+    const existingUser = await UserModel.findOne({ email }); //function n servicce
 
     if (existingUser) {
       return res.status(400).json({ message: "User already exists." });

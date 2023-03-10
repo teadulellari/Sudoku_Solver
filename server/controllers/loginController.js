@@ -1,8 +1,7 @@
 import express from "express";
 const router = express.Router();
 import UserModel from "../models/userModel.js";
-import bcrypt from "bcryptjs";
-import { getUser, checkUserPass } from "../service/loginService.js"; 
+import { getUser, checkUserPass } from "../service/loginService.js";
 
 export const logIn = async (req, res) => {
   const { email, password } = req.body;
@@ -11,15 +10,17 @@ export const logIn = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "This user doesn't exist." });
     }
-    if(!user.isActive){
+    if (!user.isActive) {
       res.status(403).json({ message: "Account is not verififed." });
     }
-    const isPassValid = checkUserPass(user,password)
-    if(isPassValid){
+    const isPassValid = checkUserPass(user, password);
+    if (isPassValid) {
       req.session.user = user;
       res.status(200).send({ name: `${user.firstName} ${user.lastName}` });
     }
-    res.status(401).json({ message: "Incorrect email or password. Please try again." });
+    res
+      .status(401)
+      .json({ message: "Incorrect email or password. Please try again." });
   } catch (error) {
     res.status(500).send(error);
   }

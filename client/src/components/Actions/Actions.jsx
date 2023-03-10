@@ -5,12 +5,7 @@ import { Solve } from "./Solve";
 import Timer from "./Timer";
 import "./actions.css";
 
-const Actions = ({
-  gridVal,
-  setGridVal,
-  setValidity,
-  setShowComponent,
-}) => {
+const Actions = ({ gridVal, setGridVal, setValidity, setShowComponent }) => {
   return (
     <Container maxWidth="xl" id="actionsContainer">
       <Paper elevation={4} id="actionsPaper">

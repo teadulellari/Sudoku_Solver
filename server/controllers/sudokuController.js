@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { checkSessionValidity } from "./controllerLogIn.js";
+import { checkSessionValidity } from "./loginController.js";
 
 const isValid = (board, row, col, num) => {
   debugger;
