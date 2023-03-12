@@ -39,7 +39,7 @@ const Signup = () => {
 
       if (response.status === 200) {
         setResponseMessage(
-          "We have registred your account. Check your email to verify your account."
+          "We have registered your account. Check your email to verify your account."
         );
       } else if (response.status === 500) {
         setResponseMessage("Something went wrong!");
