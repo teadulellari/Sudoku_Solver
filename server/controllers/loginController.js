@@ -1,40 +1,37 @@
 import express from "express";
 const router = express.Router();
-import UserModel from "../models/userModel.js";
-import { getUser, checkUserPass } from "../service/loginService.js";
+import { getUser, checkUserPass } from "../service/userService.js";
 
 export const logIn = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = getUser(email);
+    const user = await getUser(email);
     if (!user) {
-      return res.status(404).json({ message: "This user doesn't exist." });
+      return res.status(401).json({ message: "Incorrect email or password. Please try again." });
     }
     if (!user.isActive) {
-      res.status(403).json({ message: "Account is not verififed." });
+      res.status(403).json({ message: "Account is not verified." });
     }
-    const isPassValid = checkUserPass(user, password);
+    const isPassValid = await checkUserPass(user, password);
     if (isPassValid) {
       req.session.user = user;
-      res.status(200).send({ name: `${user.firstName} ${user.lastName}` });
+      return res.status(200).send({ name: `${user.firstName} ${user.lastName}` });
     }
-    res
+    return res
       .status(401)
-      .json({ message: "Incorrect email or password. Please try again." });
+      .send({ message: "Incorrect email or password. Please try again." });
   } catch (error) {
+    console.log(error)
     res.status(500).send(error);
   }
 };
 
 export const checkSessionValidity = async (req, res) => {
   if (req.session.user) {
-    const userData = await UserModel.findOne({
-      email: req.session.user.email,
-    });
+    const user = await getUser(req.session.user.email)
+    if (!user) return res.status(404).send("User not found");
 
-    if (!userData) return res.status(404).send("User not found");
-    const name = `${userData.firstName} ${userData.lastName}`;
-
+    const name = `${user.firstName} ${user.lastName}`;
     res.status(200).send({ name: name });
   } else {
     res.status(401).send("Unauthorized user");

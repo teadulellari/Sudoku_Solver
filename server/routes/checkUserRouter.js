@@ -6,7 +6,7 @@ const router = express.Router();
 import {
   checkUser,
   recoverPassword,
-} from "../controllers/checkUserController.js";
+} from "../controllers/recoveryController.js";
 
 router.get("/checkUser", checkUser);
 router.post("/recoverPassword", recoverPassword);
