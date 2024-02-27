@@ -4,12 +4,12 @@ This web application is a Sudoku solver that efficiently solves any given Sudoku
 
 ## Features
 
--Sudoku solving capability using a backtracking algorithm.
--Solving Sudoku game if you wish to.
--Google OAuth integration for convenient registration and login.
--Secure email verification process to ensure account authenticity.
--Option for users to check the correctness of their solutions.
--Built-in timer for users to conveniently track their solving time.
+- Sudoku solving capability using a backtracking algorithm.
+- Solving Sudoku game if you wish to.
+- Google OAuth integration for convenient registration and login.
+- Secure email verification process to ensure account authenticity.
+- Option for users to check the correctness of their solutions.
+- Built-in timer for users to conveniently track their solving time.
 
 ### Installation
 
