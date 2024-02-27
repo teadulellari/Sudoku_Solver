@@ -1,6 +1,6 @@
 # Sudoku_Solver
 
-This web application is a Sudoku solver that efficiently solves any given Sudoku puzzle using a backtracking algorithm or gives you the opportunity t osolve it yourself as well. In addition to the solving functionality, I have incorporated several user-friendly features to enhance the overall experience.
+This web application is a Sudoku solver that efficiently solves any given Sudoku puzzle using a backtracking algorithm or gives you the opportunity to solve it yourself as well. In addition to the solving functionality, I have incorporated several user-friendly features to enhance the overall experience like Solution Validation and more.
 
 ## Features
 
